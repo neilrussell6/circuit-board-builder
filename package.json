@@ -9,6 +9,8 @@
   "private": true,
   "scripts": {
     "ls": "lerna ls",
+    "bootstrap": "lerna bootstrap",
+    "lerna:create": "lerna create",
     "ui-react:serve": "npm run serve --prefix ./packages/ui-react",
     "help": "package-json-help.js"
   },

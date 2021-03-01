@@ -1,5 +1,6 @@
 {
   "ls": "list all packages",
   "bootstrap": "bootstrap all packages, installing all their dependencies and linking any cross-dependencies",
-  "lerna:create": "create a new Lerna package ``npm run lerna:create -- <name>``"
+  "lerna:create": "create a new Lerna package ``npm run lerna:create -- <name>``",
+  "ui-react:serve": "serve React UI"
 }
