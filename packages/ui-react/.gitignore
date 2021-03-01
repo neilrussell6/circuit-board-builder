@@ -1,0 +1,46 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# ----------------------------
+# system
+# ----------------------------
+
+# OS : OSX
+#
+.DS_Store
+
+# IDE
+#
+.idea
+.vscode
+
+# ----------------------------
+# packages
+# ----------------------------
+
+# Javascript : dependencies
+#
+node_modules
+.pnp
+.pnp.js
+
+# Javascript : testing
+#
+coverage
+.nyc_output/
+
+# Javascript : build
+#
+build
+.build
+.cache
+
+# Javascript : misc
+#
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+#
+.env*
+.env.*

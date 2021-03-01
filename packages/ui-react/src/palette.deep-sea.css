@@ -1,0 +1,49 @@
+:root {
+  /* primary */
+  --primary-dark6: #0f1114;
+  --primary-dark5: #15171b;
+  --primary-dark4: #111f28;
+  --primary-dark3: #162b3b;
+  --primary-dark2: #213a4b;
+  --primary-dark1: #2a516a;
+  --primary-light1: #3f6d8d;
+  --primary-light2: #4085af;
+  --primary-light3: #5bc1ff;
+  --primary-light4: #86b9de;
+  --primary-light5: #aacce5;
+  --primary-light6: #c2e5ff;
+
+  /* primary (desaturated) */
+  --primary-desaturated-dark4: rgba(25, 27, 29, 0.73);
+  --primary-desaturated-dark3: rgba(32, 35, 40, 0.81);
+  --primary-desaturated-dark2: rgba(28, 30, 36, 0.3);
+  --primary-desaturated-dark1: #282c34;
+  --primary-desaturated-light1: rgba(55, 70, 92, 0.49);
+  --primary-desaturated-light2: #43546e;
+  --primary-desaturated-light3: #627490;
+  --primary-desaturated-light4: #80aad7;
+
+  /* secondary */
+  --secondary-dark5: #0e1001;
+  --secondary-dark4: #191c02;
+  --secondary-dark3: #272b04;
+  --secondary-dark2: #394007;
+  --secondary-dark1: #47500b;
+  --secondary-light1: #697611;
+  --secondary-light2: #acbf48;
+  --secondary-light3: #d3e9a1;
+  --secondary-light4: #e3f8b4;
+  --secondary-light5: #f1ffd5;
+
+  /* secondary (desaturated) */
+  --secondary-desaturated-dark2: #20231d;
+  --secondary-desaturated-dark1: #41473c;
+  --secondary-desaturated-light1: #7a8570;
+  --secondary-desaturated-light2: #acbb9e;
+
+  /* tertiary */
+  --tertiary-dark2: #925d29;
+  --tertiary-dark1: #af753b;
+  --tertiary-light1: #d5a36e;
+  --tertiary-light2: #eebc87;
+}

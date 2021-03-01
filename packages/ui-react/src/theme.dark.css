@@ -1,0 +1,93 @@
+:root {
+  /* map palette to theme at generic level */
+  /* page */
+  --page-bg-color: var(--primary-desaturated-dark1);
+
+  /* panels */
+  --panels-bdr-color: var(--primary-desaturated-light1);
+  --panels-bdr-shadow-color: var(--primary-desaturated-dark1);
+  --panel1-bg-color: var(--primary-desaturated-dark3);
+  --panel2-bg-color: var(--primary-desaturated-dark4);
+
+  /* panels : selected */
+  --panels-bdr-color-selected: var(--secondary-light3);
+  /*--panels-bdr-shadow-color-selected: var(--secondary-light2);*/
+  --panels-bdr-shadow-color-selected: rgba(172, 191, 72, 0.28);
+  /*--panel2-bg-color-selected: var(--secondary-desaturated-dark2);*/
+  --panel2-bg-color-selected: rgba(39, 43, 4, 0.25);
+
+  /* panels : heading */
+  --panel2-heading-bg-color: var(--primary-dark6);
+  --panel2-heading-text-color: var(--primary-light2);
+  --panel2-heading-bdr-color: var(--panels-bdr-color);
+
+  /* buttons */
+  --buttons-bg-color: var(--primary-light2);
+  --buttons-text-color: var(--primary-dark4);
+  --buttons-bdr-color: var(--primary-light2);
+  --buttons-bg-color-hover: var(--primary-light3);
+  --buttons-text-color-hover: var(--primary-dark5);
+  --buttons-bdr-color-hover: var(--primary-light3);
+
+  --secondary-buttons-bg-color: var(--secondary-light3);
+  --secondary-buttons-text-color: var(--secondary-dark3);
+  --secondary-buttons-bdr-color: var(--secondary-light3);
+  --secondary-buttons-bg-color-hover: var(--secondary-light5);
+  --secondary-buttons-text-color-hover: var(--secondary-dark4);
+  --secondary-buttons-bdr-color-hover: var(--secondary-light5);
+
+  --buttons-bg-color-transparent: transparent;
+  --buttons-text-color-transparent: var(--primary-light2);
+  --buttons-bg-color-transparent-hover: var(--primary-light2);
+  --buttons-text-color-transparent-hover: var(--primary-light6);
+
+  /* form inputs */
+  --form-input-bg-color: var(--primary-dark6);
+  --form-input-bdr-color: var(--primary-light2);
+  --form-input-text-color: var(--primary-light2);
+  --form-input-bg-color-selected: var(--secondary-dark5);
+  --form-input-bdr-color-selected: var(--secondary-light3);
+  --form-input-text-color-selected: var(--secondary-light3);
+
+  --form-input-bg-color-valid: var(--primary-dark6);
+  --form-input-bdr-color-valid: var(--primary-light2);
+  --form-input-text-color-valid: var(--primary-light2);
+  --form-input-bg-color-valid-selected: var(--secondary-dark5);
+  --form-input-bdr-color-valid-selected: var(--secondary-light3);
+  --form-input-text-color-valid-selected: var(--secondary-light3);
+
+  --form-input-bg-color-invalid: var(--primary-dark6);
+  --form-input-bdr-color-invalid: var(--tertiary-light1);
+  --form-input-text-color-invalid: var(--tertiary-light1);
+  --form-input-bg-color-invalid-selected: var(--primary-dark6);
+  --form-input-bdr-color-invalid-selected: var(--tertiary-light2);
+  --form-input-text-color-invalid-selected: var(--tertiary-light2);
+
+  --form-input-bg-color-disabled: var(--grey-light1);
+  --form-input-bdr-color-disabled: var(--grey-light2);
+  --form-input-text-color-disabled: var(--grey-light2);
+
+  --form-input-bg-color-readonly: var(--primary-dark2);
+  --form-input-bdr-color-readonly: var(--primary-light2);
+  --form-input-text-color-readonly: var(--primary-light3);
+  --form-input-bg-color-readonly-selected: var(--secondary-dark1);
+  --form-input-bdr-color-readonly-selected: var(--secondary-light3);
+  --form-input-text-color-readonly-selected: var(--secondary-light5);
+
+  /* text */
+  --text-color-shadow: var(--primary-desaturated-dark2);
+  --text-color1: var(--primary-light6);
+  --text-color2: var(--primary-desaturated-light3);
+  --text-color3: var(--primary-light3);
+
+  /* map palette/generic styles to theme at specific level */
+  /* text : headings */
+
+  /* text : body */
+
+  /* text : links */
+
+  /* bg : page */
+
+  /* buttons */
+}

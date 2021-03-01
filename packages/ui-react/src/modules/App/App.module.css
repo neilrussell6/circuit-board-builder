@@ -1,0 +1,70 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.header {
+  height: 20px;
+}
+.main {
+  flex: auto;
+}
+.footer {
+  height: 20px;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.col {
+  width: 200px;
+  composes: mainCol from '../../index.module.css';
+  transition: width 0.2s; /* show */
+}
+.colMin {
+  width: 40px;
+  composes: mainCol from '../../index.module.css';
+  transition: width 0.1s; /* hide */
+}
+.colCenter {
+  flex-grow: 1;
+  margin: 0 20px;
+}
+
+@media only screen and (min-width: 1360px) {
+  .colLeft {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 20px;
+    bottom: 20px;
+  }
+  .colRight {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    top: 20px;
+    bottom: 20px;
+  }
+  /*.colRight {}*/
+  .colCenter {
+    flex-grow: 1;
+    margin: 0;
+  }
+}
+
+.button {
+  composes: noSelect from "../../index.module.css";
+  composes: transparentButton from "../../index.module.css";
+  font-size: 20px;
+  padding: 5px;
+}
+
+.right {
+  float: right;
+}

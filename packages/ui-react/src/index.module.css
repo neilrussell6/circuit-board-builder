@@ -1,0 +1,229 @@
+/* common */
+
+.loading {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.heading {
+  color: var(--text-color2);
+  font-size: 28px;
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 30px;
+  margin-left: -40px;
+  text-shadow: 10px 5px 2px var(--text-color-shadow);
+}
+
+.subHeading {
+  color: var(--text-color1);
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+/* common */
+
+.emptyView {
+  font-size: 12px;
+  color: var(--primary-text-color-dark);
+  padding-left: 20px;
+}
+
+.noSelect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: none;
+}
+
+/* list */
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.listItem {
+  position: relative;
+}
+
+/* buttons */
+
+.button {
+  border: 0 solid var(--buttons-bdr-color);
+  background: var(--buttons-bg-color);
+  color: var(--buttons-text-color);
+  font-family: inherit;
+  font-size: 14px;
+  min-height: 32px;
+  min-width: 34px;
+  border-radius: 10px/200%;
+  padding: 0 20px;
+}
+.button:hover {
+  cursor: pointer;
+  background: var(--buttons-bg-color-hover);
+  color: var(--buttons-text-color-hover);
+  border-color: var(--buttons-bdr-color-hover);
+}
+
+.buttonSecondary {
+  composes: button;
+  border: 0 solid var(--secondary-buttons-bdr-color);
+  background: var(--secondary-buttons-bg-color);
+  color: var(--secondary-buttons-text-color);
+}
+.buttonSecondary:hover {
+  cursor: pointer;
+  background: var(--secondary-buttons-bg-color-hover);
+  color: var(--secondary-buttons-text-color-hover);
+  border-color: var(--secondary-buttons-bdr-color-hover);
+}
+
+.transparentButton {
+  border: none;
+  background: var(--buttons-bg-color-transparent);
+  color: var(--buttons-text-color-transparent);
+  font-family: inherit;
+  font-size: 14px;
+  border-radius: 10px/200%;
+  padding: 0 20px;
+  min-height: 32px;
+  min-width: 34px;
+}
+.transparentButton:hover {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--buttons-text-color-transparent-hover);
+}
+
+/* forms : input */
+
+.input {
+  background-color: var(--form-input-bg-color);
+  color: var(--form-input-text-color);
+  border: 1px solid var(--form-input-bdr-color);
+  font-size: 18px;
+  padding: 5px 10px;
+  flex-grow: 1;
+  border-radius: 0;
+  width: 100%;
+}
+.inputSelected {
+  composes: input;
+  background-color: var(--form-input-bg-color-selected);
+  border: 1px solid var(--form-input-bdr-color-selected);
+  color: var(--form-input-text-color-selected);
+}
+.inputValid {
+  composes: input;
+  background-color: var(--form-input-bg-color-valid);
+  border: 1px solid var(--form-input-bdr-color-valid);
+  color: var(--form-input-text-color-valid);
+}
+.inputValidSelected {
+  composes: input;
+  background-color: var(--form-input-bg-color-valid-selected);
+  border: 1px solid var(--form-input-bdr-color-valid-selected);
+  color: var(--form-input-text-color-valid-selected);
+}
+.inputInvalidSelected {
+  composes: input;
+  background-color: var(--form-input-bg-color-invalid-selected);
+  border: 1px solid var(--form-input-bdr-color-invalid-selected);
+  color: var(--form-input-text-color-invalid-selected);
+}
+.inputInvalid {
+  composes: input;
+  background-color: var(--form-input-bg-color-invalid);
+  border: 1px solid var(--form-input-bdr-color-invalid);
+  color: var(--form-input-text-color-invalid);
+}
+.inputDisabled {
+  composes: input;
+  background-color: var(--form-input-bg-color-disabled);
+  border: 1px solid var(--form-input-bg-color-disabled);
+  color: var(--form-input-text-color-disabled);
+}
+.inputReadOnly {
+  composes: input;
+  background-color: var(--form-input-bg-color-readonly);
+  border: 1px solid var(--form-input-bdr-color-readonly);
+  color: var(--form-input-text-color-readonly);
+  font-size: 14px;
+  padding: 6px 12px;
+}
+.inputReadOnlySelected {
+  composes: inputReadOnly;
+  background-color: var(--form-input-bg-color-readonly-selected);
+  border: 1px solid var(--form-input-bdr-color-readonly-selected);
+  color: var(--form-input-text-color-readonly-selected);
+}
+
+/* heading */
+
+.mainColHeading {
+  color: var(--text-color2);
+}
+
+.subColHeading {
+  color: var(--primary-text-color-dark);
+}
+
+.subHeading {
+  font-size: 18px;
+  color: var(--text-color1);
+  height: 32px;
+}
+
+.mainCol {
+  border: 1px solid var(--panels-bdr-color);
+  background: var(--panel1-bg-color);
+  border-radius: 5px;
+  padding: 20px 10px;
+}
+.subCol {
+  border: 1px solid var(--panels-bdr-color);
+  background: var(--panel2-bg-color);
+  border-radius: 5px;
+  padding: 20px 10px;
+}
+
+@keyframes subColSelectedFade0 {
+  0% {
+    border: 1px solid var(--panels-bdr-color-selected);
+    box-shadow: 0 0 20px var(--panels-bdr-shadow-color-selected);
+    background: var(--panel2-bg-color-selected);
+  }
+  100% {
+    border: 1px solid var(--panels-bdr-color);
+    box-shadow: 0 0 0 var(--panels-bdr-shadow-color);
+    background: var(--panel2-bg-color);
+  }
+}
+@keyframes subColSelectedFade1 {
+  0% {
+    border: 1px solid var(--panels-bdr-color-selected);
+    box-shadow: 0 0 20px var(--panels-bdr-shadow-color-selected);
+    background: var(--panel2-bg-color-selected);
+  }
+  100% {
+    border: 1px solid var(--panels-bdr-color);
+    box-shadow: 0 0 0 var(--panels-bdr-shadow-color);
+    background: var(--panel2-bg-color);
+  }
+}
+
+@media (min-width: 700px) {
+  .container .col {
+    padding: 20px 10px;
+  }
+}

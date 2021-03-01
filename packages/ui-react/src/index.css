@@ -1,0 +1,106 @@
+/* common */
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: calc(10px + 1vmin);
+  background-color: var(--page-bg-color);
+  color: var(--text-color1);
+  text-transform: uppercase;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+a {
+  text-decoration: none;
+  font-style: normal;
+}
+
+hr {
+  border: 1px solid transparent;
+}
+
+*:focus {
+  outline: none;
+}
+
+hr {
+  margin: 30px 0;
+}
+
+.circle {
+  fill: #d94d4d;
+  transition: fill 0.2s;
+}
+.circle.hover {
+  fill: #ff0000;
+  transition: fill 0s;
+}
+.circle.active {
+  fill: #9dc74d;
+  transition: fill 0.2s;
+}
+.circle.active.hover {
+  fill: #aaff00;
+  transition: fill 0s;
+}
+
+.rect {
+  fill: #2a516a;
+  stroke: #111f28;
+  strokeWidth: 1;
+  transition: fill 0.2s;
+}
+.rect.hover {
+  fill: #4f82a3;
+  transition: fill 0s;
+}
+.path {
+  fill: none;
+  stroke: #d94d4d;
+  strokeWidth: 1;
+}
+.path.active {
+  stroke: #9dc74d;
+  strokeWidth: 1;
+}
+
+/* svg */
+
+svg text {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+svg text::selection {
+  background: none;
+}
+
+.svg-content-main {
+  position: absolute;
+  margin: auto;
+  left: 50%;
+  margin-left: -580px;
+  min-width: 1160px;
+}
+
+@media only screen and (min-width: 1360px) {
+  .svg-content-main {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    margin-left: 0;
+    min-width: auto;
+  }
+}

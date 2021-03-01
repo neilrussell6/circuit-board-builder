@@ -1,0 +1,19 @@
+{
+  "name": "root",
+  "description": "Nand2Tetris",
+  "version": "0.0.0",
+  "author": "NoNa Creative <hello@nona.digital>",
+  "contributors": [
+    "Neil Russell <neilrussell6@gmail.com>"
+  ],
+  "private": true,
+  "scripts": {
+    "ls": "lerna ls",
+    "ui-react:serve": "npm run serve --prefix ./packages/ui-react",
+    "help": "package-json-help.js"
+  },
+  "devDependencies": {
+    "lerna": "^3.22.1",
+    "package-json-help": "0.0.11"
+  }
+}
