@@ -12,15 +12,15 @@
 }
 
 .button {
-  composes: noSelect from "../../index.module.css";
-  composes: transparentButton from "../../index.module.css";
+  composes: noSelect from "../../../index.module.css";
+  composes: transparentButton from "../../../index.module.css";
   font-size: 20px;
   padding: 5px;
 }
 
 .buttonSelected {
-  composes: noSelect from "../../index.module.css";
-  composes: transparentButton from "../../index.module.css";
+  composes: noSelect from "../../../index.module.css";
+  composes: transparentButton from "../../../index.module.css";
   color: white;
   font-size: 20px;
   padding: 5px;

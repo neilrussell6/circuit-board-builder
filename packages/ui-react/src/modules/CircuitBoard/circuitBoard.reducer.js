@@ -25,4 +25,4 @@ export const circuitBoardSlice = createSlice({
   initialState: INITIAL_STATE,
 })
 
-export const { reducer: circuitBoardReducer } = circuitBoardSlice
+export const { reducer } = circuitBoardSlice

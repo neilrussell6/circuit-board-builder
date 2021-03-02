@@ -1,1 +1,1 @@
-export { CircuitBoard } from './CircuitBoard'
+export { CircuitBoard } from './CircuitBoard/CircuitBoard.container'

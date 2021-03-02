@@ -3,9 +3,8 @@ import { CgChevronDoubleLeft, CgChevronDoubleRight } from 'react-icons/cg'
 
 import styles from './App.module.css'
 // import { CircuitBoard } from '../CircuitBoard/components'
-import CircuitBoard from '../CircuitBoard'
-import { ChipList } from '../Chip/components'
-import Details from '../Details'
+import { CircuitBoard } from '../CircuitBoard/components'
+import { ChipList, ChipDetail } from '../Chip/components'
 
 export function App() {
   const [isLeft, setIsLeft] = useState (true)
@@ -37,7 +36,7 @@ export function App() {
             <button onClick={() => setIsRight (isRight ? false : true)} className={styles.button}>
               {isRight ? <CgChevronDoubleRight/> : <CgChevronDoubleLeft/>}
             </button>
-            <Details/>
+            <ChipDetail/>
           </div>
         </div>
       </main>

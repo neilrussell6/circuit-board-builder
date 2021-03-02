@@ -39,8 +39,8 @@ import {
 import * as d3 from 'd3'
 
 import styles from './CircuitBoard.module.css'
-import { SVG_HEIGHT, SVG_WIDTH, NODE_TYPE } from './constants'
-import { MODE } from '../Mode'
+import { SVG_HEIGHT, SVG_WIDTH, NODE_TYPE } from '../constants'
+import { MODE } from '../../Mode'
 
 export function CircuitBoard({ mode, setMode, displaySettings }) {
 

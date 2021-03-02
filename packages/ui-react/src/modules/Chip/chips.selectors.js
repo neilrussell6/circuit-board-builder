@@ -1,14 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit'
-import { values, prop, pipe, find, propEq, when, isNil, always } from 'ramda'
+import { prop, pipe, find, propEq, when, isNil, always, tap, values } from 'ramda'
 
-const defaultBlankChip = {
-  id: 0,
-  name: '',
-  description: '',
-  truthTable: [],
-  inputs: [],
-  outputs: [],
-}
+import { DEFAULT_BLANK_CHIP } from './constants'
 
 export const chipsSelector = prop ('chips')
 
@@ -17,18 +10,11 @@ export const selectedChipIdSelector = prop ('selectedChipId')
 export const selectedChipSelector = createSelector (
   [selectedChipIdSelector, chipsSelector],
   (chipId, chips) => pipe (
+    values,
     find (propEq ('id', chipId)),
     when (
       isNil,
-      always (defaultBlankChip),
+      always (DEFAULT_BLANK_CHIP),
     ),
   ) (chips),
-)
-
-export const ChipListSelector = createSelector (
-  [chipsSelector, selectedChipIdSelector],
-  (chips, selectedChipId) => ({
-    chips: values (chips),
-    selectedChipId,
-  }),
 )

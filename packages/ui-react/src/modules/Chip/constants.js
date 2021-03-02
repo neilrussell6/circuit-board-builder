@@ -1,5 +1,14 @@
 import { lib } from '@nr6/nand2tetris-logic-gates'
 
+export const DEFAULT_BLANK_CHIP = {
+  id: 0,
+  name: '',
+  description: '',
+  truthTable: [],
+  inputs: [],
+  outputs: [],
+}
+
 export const DEFAULT_CHIPS = {
   1: {
     name: 'ID',
