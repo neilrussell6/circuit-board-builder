@@ -4,7 +4,7 @@ import { createSlice } from '@reduxjs/toolkit'
 // reducer name
 //---------------------------------
 
-const name = '[Circuit Board]'
+const name = '[circuit board]'
 
 //---------------------------------
 // initial state

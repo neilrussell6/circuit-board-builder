@@ -2,8 +2,7 @@ import { combineReducers, Reducer } from 'redux'
 
 import { reducer as mode } from '../../modules/App/mode.reducer'
 import { reducer as displaySettings } from '../../modules/App/displaySettings.reducer'
-import { reducer as chips } from '../../modules/Chips/reducer'
-import { reducer as selectedChipId } from '../../modules/App/selectedChipId.reducer'
+import { chips, selectedChipId } from '../../modules/Chip'
 import { reducer as selectedNodeId } from '../../modules/App/selectedNodeId.reducer'
 import { reducer as circuitBoard } from '../../modules/CircuitBoard/reducer'
 

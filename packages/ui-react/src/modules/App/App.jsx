@@ -4,7 +4,7 @@ import { CgChevronDoubleLeft, CgChevronDoubleRight } from 'react-icons/cg'
 import styles from './App.module.css'
 // import { CircuitBoard } from '../CircuitBoard/components'
 import CircuitBoard from '../CircuitBoard'
-import Chips from '../Chips'
+import { ChipList } from '../Chip/components'
 import Details from '../Details'
 
 export function App() {
@@ -24,12 +24,12 @@ export function App() {
                     className={[styles.button, styles.right].join (' ')}>
               {isLeft ? <CgChevronDoubleLeft/> : <CgChevronDoubleRight/>}
             </button>
-            <Chips/>
+            <ChipList />
           </div>
 
           {/* center */}
           <div className={styles.colCenter}>
-            <CircuitBoard/>
+            <CircuitBoard />
           </div>
 
           {/* right */}

@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { prop } from 'ramda'
 
 //---------------------------------
 // reducer name
@@ -20,10 +21,10 @@ export const selectedChipIdSlice = createSlice({
   name,
   initialState: INITIAL_STATE,
   reducers: {
-    setSelectedChipId: (state, action) => (action.payload),
+    setSelectedChipId: (state, { payload }) => payload,
   },
 })
 
-export const { setSelectedChipId } = selectedChipIdSlice.actions
+export const { setSelectedChipId } = prop ('actions') (selectedChipIdSlice)
 
 export const { reducer } = selectedChipIdSlice

@@ -3,10 +3,10 @@ import { createSlice } from '@reduxjs/toolkit'
 import { DEFAULT_CHIPS } from './constants'
 
 //---------------------------------
-// reducer name
+// actions
 //---------------------------------
 
-const name = '[Chips]'
+const name = '[chips]'
 
 //---------------------------------
 // initial state
@@ -18,14 +18,14 @@ export const INITIAL_STATE = DEFAULT_CHIPS
 // action creators
 //---------------------------------
 
-export const chipsSlice = createSlice({
+export const chipsSlice = createSlice ({
   name,
   initialState: INITIAL_STATE,
   reducers: {
-    setChips: (state, action) => (action.payload),
+    setChips: (state, { payload }) => payload,
   },
 })
 
-export const { setChips } = chipsSlice.actions
+export const { setChips } = prop ('actions') (chipsSlice)
 
 export const { reducer } = chipsSlice

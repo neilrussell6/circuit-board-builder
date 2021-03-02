@@ -3,10 +3,12 @@ import { createSlice } from '@reduxjs/toolkit'
 import { MODE } from './constants'
 
 //---------------------------------
-// reducer name
+// actions
 //---------------------------------
 
-const name = '[Mode]'
+const name = '[mode]'
+
+
 
 //---------------------------------
 // initial state
@@ -26,6 +28,9 @@ export const modeSlice = createSlice({
   },
 })
 
+
+console.log(Object.keys(modeSlice))
+console.log(Object.keys(modeSlice.actions))
 export const { setMode } = modeSlice.actions
 
 export const { reducer } = modeSlice
