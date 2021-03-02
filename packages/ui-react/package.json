@@ -22,6 +22,10 @@
     "sinon": "^9.2.4"
   },
   "dependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/register": "^7.9.0",
     "@nr6/nand2tetris-logic-gates": "^0.0.0",
     "@reduxjs/toolkit": "^1.5.0",
     "d3": "^6.5.0",

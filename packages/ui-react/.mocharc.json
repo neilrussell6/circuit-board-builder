@@ -8,5 +8,6 @@
   "recursive": true,
   "ui": "bdd",
   "watch-files": ["src/**/*.js"],
-  "spec": "src/**/*.test.js"
+  "spec": "src/**/*.test.js",
+  "require": "@babel/register"
 }
