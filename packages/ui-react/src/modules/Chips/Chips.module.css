@@ -1,0 +1,19 @@
+.header {
+  font-size: 24px;
+  padding: 5px;
+}
+
+.chip {
+  cursor: pointer;
+  margin: 10px 5px 10px 5px;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.selectedChip {
+  cursor: pointer;
+  margin: 10px 5px 10px 5px;
+  padding: 10px;
+  border: 1px solid green;
+}
+
