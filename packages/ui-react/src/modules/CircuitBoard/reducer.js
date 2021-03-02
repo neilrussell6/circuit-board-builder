@@ -1,31 +1,28 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { DEFAULT_CHIPS } from './Chips.constants'
-
 //---------------------------------
 // reducer name
 //---------------------------------
 
-const name = '[Chips]'
+const name = '[Circuit Board]'
 
 //---------------------------------
 // initial state
 //---------------------------------
 
-export const INITIAL_STATE = DEFAULT_CHIPS
+export const INITIAL_STATE = {
+  inputs: [],
+  outputs: [],
+  nodes: {},
+}
 
 //---------------------------------
 // action creators
 //---------------------------------
 
-export const chipsSlice = createSlice({
+export const circuitBoardSlice = createSlice({
   name,
   initialState: INITIAL_STATE,
-  reducers: {
-    setChips: (state, action) => (action.payload),
-  },
 })
 
-export const { setChips } = chipsSlice.actions
-
-export const { reducer } = chipsSlice
+export const { reducer } = circuitBoardSlice
