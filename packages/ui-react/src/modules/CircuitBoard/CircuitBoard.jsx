@@ -42,16 +42,7 @@ import styles from './CircuitBoard.module.css'
 import { SVG_HEIGHT, SVG_WIDTH, NODE_TYPE } from './constants'
 import { MODE } from '../App'
 
-// TODO: get from state
-const displaySettings = {
-  vspacing: 50,
-  hspacing: 120,
-  edgeThickness: 1.4,
-  edgeSpacing: 5,
-  size: 20,
-}
-
-export function CircuitBoard({ mode, setMode }) {
+export function CircuitBoard({ mode, setMode, displaySettings }) {
 
   // TODO: get from state
   const [circuitBoard, setCircuitBoard] = useState ({
@@ -139,8 +130,8 @@ export function CircuitBoard({ mode, setMode }) {
     setTransposedGraphAL (transposedGraphAL)
 
     // build vertices (coords) for D3
-    const { hspacing, vspacing } = displaySettings
-    const graphUIVertices = buildVertices (hspacing) (vspacing) (graphAL) (circuitBoard) (graphLevels) (graphLevelToVertexIndexMap)
+    const { hSpacing, vSpacing } = displaySettings
+    const graphUIVertices = buildVertices (hSpacing) (vSpacing) (graphAL) (circuitBoard) (graphLevels) (graphLevelToVertexIndexMap)
 
     // build edges (coords) for D3
     const { edgeSpacing } = displaySettings
@@ -195,14 +186,14 @@ export function CircuitBoard({ mode, setMode }) {
     const line = d3.line ().context (null)
     const drawSegmentedEdge = ({ source, target }) => {
       const s1 = [source.x - newXOffset, source.y]
-      const s2 = [(source.x - newXOffset) + (hspacing / 3), source.y]
-      const s3 = [(target.x - newXOffset) - (hspacing / 3), target.y]
+      const s2 = [(source.x - newXOffset) + (hSpacing / 3), source.y]
+      const s3 = [(target.x - newXOffset) - (hSpacing / 3), target.y]
       const s4 = [target.x - newXOffset, target.y]
       return line ([s1, s2, s3, s4])
     }
 
     // calculations
-    const newXOffset = (hspacing * graphLevelCount - hspacing) / 2
+    const newXOffset = (hSpacing * graphLevelCount - hSpacing) / 2
 
     // edges
     // TODO: draw path and translate, so that animations are not so shit
