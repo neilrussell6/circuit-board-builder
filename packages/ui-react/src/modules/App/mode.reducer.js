@@ -12,9 +12,7 @@ const name = '[Mode]'
 // initial state
 //---------------------------------
 
-export const INITIAL_STATE = {
-  mode: MODE.INTERACTIVE,
-}
+export const INITIAL_STATE = MODE.INTERACTIVE
 
 //---------------------------------
 // action creators
@@ -24,7 +22,7 @@ export const modeSlice = createSlice({
   name,
   initialState: INITIAL_STATE,
   reducers: {
-    setMode: (state, action) => (state.mode = action.payload),
+    setMode: (state, action) => (action.payload),
   },
 })
 

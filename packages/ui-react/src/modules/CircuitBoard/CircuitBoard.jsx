@@ -51,9 +51,7 @@ const displaySettings = {
   size: 20,
 }
 
-export function CircuitBoard() {
-  // TODO: get from state
-  const [mode, setMode] = useState (MODE.INTERACTIVE)
+export function CircuitBoard({ mode, setMode }) {
 
   // TODO: get from state
   const [circuitBoard, setCircuitBoard] = useState ({
@@ -389,9 +387,9 @@ export function CircuitBoard() {
       {/* TODO: move to dedicated component */}
       <div className={styles.modeButtonGroup}>
         MODE:
-        <button className={styles.button} onClick={() => setMode (MODE.INTERACTIVE)}>INTERACTIVE</button>
-        <button className={styles.button} onClick={() => setMode (MODE.UPDATE)}>UPDATE</button>
-        <button className={styles.button} onClick={() => setMode (MODE.DELETE)}>DELETE</button>
+        <button className={(mode === MODE.INTERACTIVE) ? styles.buttonSelected : styles.button} onClick={() => setMode (MODE.INTERACTIVE)}>INTERACTIVE</button>
+        <button className={(mode === MODE.UPDATE) ? styles.buttonSelected : styles.button} onClick={() => setMode (MODE.UPDATE)}>UPDATE</button>
+        <button className={(mode === MODE.DELETE) ? styles.buttonSelected : styles.button} onClick={() => setMode (MODE.DELETE)}>DELETE</button>
       </div>
       <svg
         preserveAspectRatio="xMinYMin meet"
