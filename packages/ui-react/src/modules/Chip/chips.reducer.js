@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { prop } from 'ramda'
 
 import { DEFAULT_CHIPS } from './constants'
 

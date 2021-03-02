@@ -1,11 +1,24 @@
-const { assert } = require ('chai')
-// const sinon = require ('sinon')
-// const parametrize = require ('js-parametrize')
+import { assert } from 'chai'
 
-const SUT = require ('./chips.reducer')
+import { reducer as SUT, setChips, INITIAL_STATE } from './chips.reducer'
+import { lib } from '@nr6/nand2tetris-logic-gates'
 
-describe('modules/Chip/chips.reducer', () => {
-  it('should work', () => {
-    assert.equal(1, 1)
+describe ('modules/Chip/chips.reducer', () => {
+  it ('should work', () => {
+    // when ... we set chips
+    const chips = {
+      'ID1': {
+        id: 'ID1',
+        name: 'NAME',
+        description: 'DESCRIPTION',
+        functionality: () => null,
+        truthTable: [],
+        inputs: [],
+        outputs: [],
+      },
+    }
+    const action = setChips (chips)
+    const result = SUT (INITIAL_STATE, action)
+    assert.equal(result, chips)
   })
 })
