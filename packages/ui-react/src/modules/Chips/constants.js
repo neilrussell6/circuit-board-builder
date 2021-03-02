@@ -3,7 +3,7 @@ import { lib } from '@nr6/nand2tetris-logic-gates'
 export const DEFAULT_CHIPS = {
   1: {
     name: 'ID',
-    description: 'ID',
+    description: 'Outputs the same value as the input.',
     functionality: lib.ID,
     truthTable: [],
     inputs: [],
@@ -12,7 +12,7 @@ export const DEFAULT_CHIPS = {
   },
   2: {
     name: 'NAND',
-    description: 'NAND',
+    description: 'Outputs true unless both inputs are true',
     functionality: lib.NAND,
     truthTable: [],
     inputs: [],
@@ -21,7 +21,7 @@ export const DEFAULT_CHIPS = {
   },
   3: {
     name: 'NOT',
-    description: 'NOT',
+    description: 'Outputs true if the input it false and false if the input is true.',
     functionality: lib.NOT,
     truthTable: [],
     inputs: [],

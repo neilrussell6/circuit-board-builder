@@ -1,4 +1,10 @@
 .header {
+  font-weight: bold;
   font-size: 24px;
+  padding: 5px;
+}
+
+.description {
+  font-size: 16px;
   padding: 5px;
 }
