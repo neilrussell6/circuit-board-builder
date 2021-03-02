@@ -4,7 +4,7 @@ import { createSlice } from '@reduxjs/toolkit'
 // reducer name
 //---------------------------------
 
-const name = '[Selected Chip]'
+const name = '[Selected Node]'
 
 //---------------------------------
 // initial state
@@ -16,14 +16,14 @@ export const INITIAL_STATE = 0
 // action creators
 //---------------------------------
 
-export const selectedChipSlice = createSlice({
+export const selectedNodeIdSlice = createSlice({
   name,
   initialState: INITIAL_STATE,
   reducers: {
-    setSelectedChip: (state, action) => (action.payload),
+    setSelectedNodeId: (state, action) => (action.payload),
   },
 })
 
-export const { setSelectedChip } = selectedChipSlice.actions
+export const { setSelectedNodeId } = selectedNodeIdSlice.actions
 
-export const { reducer } = selectedChipSlice
+export const { reducer } = selectedNodeIdSlice

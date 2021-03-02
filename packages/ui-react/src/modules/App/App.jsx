@@ -5,6 +5,7 @@ import styles from './App.module.css'
 // import { CircuitBoard } from '../CircuitBoard/components'
 import CircuitBoard from '../CircuitBoard'
 import Chips from '../Chips'
+import Details from '../Details'
 
 export function App() {
   const [isLeft, setIsLeft] = useState (true)
@@ -36,6 +37,7 @@ export function App() {
             <button onClick={() => setIsRight (isRight ? false : true)} className={styles.button}>
               {isRight ? <CgChevronDoubleRight/> : <CgChevronDoubleLeft/>}
             </button>
+            <Details/>
           </div>
         </div>
       </main>
