@@ -1,32 +1,30 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { prop } from 'ramda'
 
-import { DEFAULT_CHIPS } from './constants'
-
 //---------------------------------
-// actions
+// circuitBoardReducer name
 //---------------------------------
 
-const name = '[chips]'
+const name = '[selected node]'
 
 //---------------------------------
 // initial state
 //---------------------------------
 
-export const INITIAL_STATE = DEFAULT_CHIPS
+export const INITIAL_STATE = 0
 
 //---------------------------------
 // action creators
 //---------------------------------
 
-export const chipsSlice = createSlice ({
+export const selectedNodeIdSlice = createSlice({
   name,
   initialState: INITIAL_STATE,
   reducers: {
-    setChips: (state, { payload }) => payload,
+    setSelectedNodeId: (state, { payload }) => payload,
   },
 })
 
-export const { setChips } = prop ('actions') (chipsSlice)
+export const { setSelectedNodeId } = prop ('actions') (selectedNodeIdSlice)
 
-export const { reducer } = chipsSlice
+export const { reducer } = selectedNodeIdSlice

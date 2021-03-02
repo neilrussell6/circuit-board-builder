@@ -1,1 +1,0 @@
-export { MODE } from './constants'

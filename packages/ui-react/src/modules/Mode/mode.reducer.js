@@ -1,29 +1,32 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { prop } from 'ramda'
+
+import { MODE } from './index'
 
 //---------------------------------
-// reducer name
+// actions
 //---------------------------------
 
-const name = '[Selected Node]'
+const name = '[mode]'
 
 //---------------------------------
 // initial state
 //---------------------------------
 
-export const INITIAL_STATE = 0
+export const INITIAL_STATE = MODE.INTERACTIVE
 
 //---------------------------------
 // action creators
 //---------------------------------
 
-export const selectedNodeIdSlice = createSlice({
+export const modeSlice = createSlice({
   name,
   initialState: INITIAL_STATE,
   reducers: {
-    setSelectedNodeId: (state, action) => (action.payload),
+    setMode: (state, { payload }) => payload,
   },
 })
 
-export const { setSelectedNodeId } = selectedNodeIdSlice.actions
+export const { setMode } = prop ('actions') (modeSlice)
 
-export const { reducer } = selectedNodeIdSlice
+export const { reducer } = modeSlice

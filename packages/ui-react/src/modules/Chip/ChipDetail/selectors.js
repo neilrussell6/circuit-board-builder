@@ -1,9 +1,9 @@
 import { createSelector } from '@reduxjs/toolkit'
 
-import { selectSelectedChip } from '../App/selectedChip.selectors'
+import { selectedChipSelector } from '../chips.selectors'
 
 export const selector = createSelector(
-  [selectSelectedChip],
+  [selectedChipSelector],
   (chip) => ({
     chip,
   }),

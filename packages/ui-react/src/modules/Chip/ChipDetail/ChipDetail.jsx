@@ -1,8 +1,8 @@
 import React from 'react'
 
-import styles from './Details.module.css'
+import styles from './ChipDetail.module.css'
 
-export const Details = ({ chip }) => {
+export const ChipDetail = ({ chip }) => {
   const { id, name, description, truthTable, inputs, outputs } = chip
   return (
     <div>

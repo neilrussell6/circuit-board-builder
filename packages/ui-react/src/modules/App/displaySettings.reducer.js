@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { prop } from 'ramda'
 
 //---------------------------------
-// reducer name
+// circuitBoardReducer name
 //---------------------------------
 
-const name = '[Display Settings]'
+const name = '[display settings]'
 
 //---------------------------------
 // initial state
@@ -26,11 +27,11 @@ export const displaySettingsSlice = createSlice({
   name,
   initialState: INITIAL_STATE,
   reducers: {
-    setVSpacing: (state, action) => (state.vSpacing = action.payload),
-    setHSpacing: (state, action) => (state.hSpacing = action.payload),
-    setEdgeThickness: (state, action) => (state.edgeThickness = action.payload),
-    setEdgeSpacing: (state, action) => (state.edgeSpacing = action.payload),
-    setSize: (state, action) => (state.size = action.payload),
+    setVSpacing: (state, { payload }) => ({ ...state, vSpacing: payload }),
+    setHSpacing: (state, { payload }) => ({ ...state, hSpacing: payload }),
+    setEdgeThickness: (state, { payload }) => ({ ...state, edgeThickness: payload }),
+    setEdgeSpacing: (state, { payload }) => ({ ...state, edgeSpacing: payload }),
+    setSize: (state, { payload }) => ({ ...state, size: payload }),
   },
 })
 
@@ -40,6 +41,6 @@ export const {
   setEdgeThickness,
   setEdgeSpacing,
   setSize,
-} = displaySettingsSlice.actions
+} = prop ('actions') (displaySettingsSlice)
 
 export const { reducer } = displaySettingsSlice

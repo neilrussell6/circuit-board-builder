@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 
 import { CircuitBoard } from './CircuitBoard'
 import { selector } from './selectors'
-import { setMode } from '../App/mode.reducer'
+import { setMode } from '../Mode/mode.reducer'
 
 const mapStateToProps = selector
 

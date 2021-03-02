@@ -1,10 +1,10 @@
 import { combineReducers, Reducer } from 'redux'
 
-import { reducer as mode } from '../../modules/App/mode.reducer'
+import { mode } from '../../modules/Mode'
 import { reducer as displaySettings } from '../../modules/App/displaySettings.reducer'
 import { chips, selectedChipId } from '../../modules/Chip'
-import { reducer as selectedNodeId } from '../../modules/App/selectedNodeId.reducer'
-import { reducer as circuitBoard } from '../../modules/CircuitBoard/reducer'
+import { reducer as selectedNodeId } from '../../modules/CircuitBoard/selectedNodeId.reducer'
+import { circuitBoardReducer as circuitBoard } from '../../modules/CircuitBoard/circuitBoard.reducer'
 
 export const rootReducer = combineReducers({
   mode,

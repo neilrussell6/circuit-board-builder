@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 //---------------------------------
-// reducer name
+// circuitBoardReducer name
 //---------------------------------
 
 const name = '[circuit board]'
@@ -25,4 +25,4 @@ export const circuitBoardSlice = createSlice({
   initialState: INITIAL_STATE,
 })
 
-export const { reducer } = circuitBoardSlice
+export const { reducer: circuitBoardReducer } = circuitBoardSlice

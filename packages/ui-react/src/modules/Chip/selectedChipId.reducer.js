@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import { prop } from 'ramda'
 
 //---------------------------------
-// reducer name
+// circuitBoardReducer name
 //---------------------------------
 
 const name = '[Selected Chip]'

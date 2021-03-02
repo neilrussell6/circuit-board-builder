@@ -4,7 +4,7 @@ const { assert } = require ('chai')
 
 const SUT = require ('./chips.reducer')
 
-describe('modules/Chip/chips.reducer', () => {
+describe('modules/Chip/chips.circuitBoardReducer', () => {
   it('should work', () => {
     assert.equal(1, 1)
   })

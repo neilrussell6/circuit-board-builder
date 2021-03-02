@@ -1,10 +1,10 @@
 import { connect } from 'react-redux'
 
-import { Details } from './Details'
+import { ChipDetail } from './ChipDetail'
 import { selector } from './selectors'
 
 const mapStateToProps = selector
 
 const mapDispatchToProps = null
 
-export default connect(mapStateToProps, mapDispatchToProps)(Details)
+export const ChipDetail = connect (mapStateToProps, mapDispatchToProps) (ChipDetail)
