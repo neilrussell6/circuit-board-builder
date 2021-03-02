@@ -1,30 +1,21 @@
 import React, { useRef, useEffect, useState } from 'react'
 import { select, transition, easeLinear } from 'd3'
 import {
-  tap,
   find,
   propEq,
   filter,
   pick,
   mergeRight,
-  without,
   head,
   assoc,
   compose,
   map,
   prop,
   evolve,
-  omit,
-  reject,
-  flip,
-  includes,
-  isEmpty,
   nth,
   assocPath,
   path,
   zip,
-  equals,
-  concat,
 } from 'ramda'
 import {
   lib,
@@ -34,7 +25,6 @@ import {
   buildEdges,
   calculateGraphLevels,
   buildGraphLevelToVertexIndexMap,
-  findParents,
 } from '@nr6/nand2tetris-logic-gates'
 import * as d3 from 'd3'
 
