@@ -33,73 +33,7 @@ import { SVG_HEIGHT, SVG_WIDTH, NODE_TYPE } from '../constants'
 import { MODE } from '../../Mode'
 import { Mode } from '../../Mode/components'
 
-export function CircuitBoard({ mode, displaySettings }) {
-
-  // TODO: get from state
-  const [circuitBoard, setCircuitBoard] = useState ({
-    start: ['0', '1', '3'],
-    end: ['6', '7'],
-    nodes: {
-      '0': {
-        chipId: null,
-        label: '',
-        type: NODE_TYPE.INPUT,
-        graphAL: [['2', 0, 0]],
-        f: lib.VALUE (true),
-      },
-      '1': {
-        chipId: null,
-        label: '',
-        type: NODE_TYPE.INPUT,
-        graphAL: [['2', 0, 1]],
-        f: lib.VALUE (false),
-      },
-      '2': {
-        chipId: '1',
-        label: 'AND',
-        type: NODE_TYPE.CHIP,
-        graphAL: [['5', 0, 0]],
-        f: lib.AND,
-      },
-      '3': {
-        chipId: null,
-        label: '',
-        type: NODE_TYPE.INPUT,
-        graphAL: [['4', 0, 0]],
-        f: lib.VALUE (true),
-      },
-      '4': {
-        chipId: '2',
-        label: 'NOT',
-        type: NODE_TYPE.CHIP,
-        graphAL: [['5', 0, 1]],
-        f: lib.NOT,
-      },
-      '5': {
-        chipId: '3',
-        label: 'OR',
-        type: NODE_TYPE.CHIP,
-        graphAL: [['6', 0, 0], ['7', 0, 0]],
-        f: lib.OR,
-      },
-      '6': {
-        chipId: null,
-        label: '',
-        type: NODE_TYPE.OUTPUT,
-        graphAL: [],
-        f: lib.ID,
-      },
-      '7': {
-        chipId: null,
-        label: '',
-        type: NODE_TYPE.OUTPUT,
-        graphAL: [],
-        f: lib.ID,
-      },
-    },
-  })
-
-  // ...
+export function CircuitBoard({ mode, displaySettings, circuitBoard, setCircuitBoard }) {
   const [graphAL, setGraphAL] = useState ()
   const [transposedGraphAL, setTransposedGraphAL] = useState ()
   const [xOffset, setXOffset] = useState (0)

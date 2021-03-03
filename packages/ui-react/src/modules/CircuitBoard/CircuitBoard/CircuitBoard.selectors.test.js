@@ -8,10 +8,12 @@ describe ('modules/CircuitBoard/CircuitBoard.selectors', () => {
       // given
       // ... there is a mode in state
       // ... and display settings in state
+      // ... and circuit board in state
       const state = {
         other: 'DATA',
         mode: 'MODE',
         displaySettings: 'DISPLAY SETTINGS',
+        circuitBoard: 'CIRCUIT BOARD',
       }
 
       // when ... we select the required props
@@ -21,6 +23,7 @@ describe ('modules/CircuitBoard/CircuitBoard.selectors', () => {
       const expected = {
         mode: 'MODE',
         displaySettings: 'DISPLAY SETTINGS',
+        circuitBoard: 'CIRCUIT BOARD',
       }
       assert.deepEqual(result, expected)
     })
