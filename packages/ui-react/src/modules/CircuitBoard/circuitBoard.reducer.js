@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, createAction } from '@reduxjs/toolkit'
 import { prop } from 'ramda'
 
 import { DEFAULT_CIRCUIT_BOARD } from './constants'
@@ -18,6 +18,10 @@ export const INITIAL_STATE = DEFAULT_CIRCUIT_BOARD
 //---------------------------------
 // action creators
 //---------------------------------
+
+export const selectNode = createAction(`${name} selectNode`)
+export const updateNode = createAction(`${name} updateNode`)
+export const deleteNode = createAction(`${name} deleteNode`)
 
 export const circuitBoardSlice = createSlice({
   name,

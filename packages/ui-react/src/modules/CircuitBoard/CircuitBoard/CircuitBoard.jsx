@@ -33,7 +33,15 @@ import { SVG_HEIGHT, SVG_WIDTH, NODE_TYPE } from '../constants'
 import { MODE } from '../../Mode'
 import { Mode } from '../../Mode/components'
 
-export function CircuitBoard({ mode, displaySettings, circuitBoard, setCircuitBoard }) {
+export function CircuitBoard({
+  mode,
+  displaySettings,
+  circuitBoard,
+  setCircuitBoard,
+  selectNode,
+  updateNode,
+  deleteNode,
+}) {
   const [graphAL, setGraphAL] = useState ()
   const [transposedGraphAL, setTransposedGraphAL] = useState ()
   const [xOffset, setXOffset] = useState (0)
@@ -240,12 +248,15 @@ export function CircuitBoard({ mode, displaySettings, circuitBoard, setCircuitBo
       .on ('mousedown', function (e, { id }) {
         if (mode === MODE.INTERACTIVE) {
           console.log ('SELECT NODE', id)
+          selectNode (id)
         }
         if (mode === MODE.UPDATE) {
           console.log ('UPDATE NODE', id)
+          updateNode (id)
         }
         if (mode === MODE.DELETE) {
           console.log ('DELETE NODE', id)
+          deleteNode (id)
         }
       })
 
