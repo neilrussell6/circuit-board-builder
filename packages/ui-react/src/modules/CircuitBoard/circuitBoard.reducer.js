@@ -21,7 +21,7 @@ export const INITIAL_STATE = DEFAULT_CIRCUIT_BOARD
 
 export const selectNode = createAction(`${name} selectNode`)
 export const updateNode = createAction(`${name} updateNode`)
-export const deleteNode = createAction(`${name} deleteNode`)
+export const deleteNode = createAction(`${name} selectNode`)
 
 export const circuitBoardSlice = createSlice({
   name,

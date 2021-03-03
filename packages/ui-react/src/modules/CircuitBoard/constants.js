@@ -27,7 +27,7 @@ export const DEFAULT_CIRCUIT_BOARD = {
       f: lib.VALUE (false),
     },
     '2': {
-      chipId: '1',
+      chipId: 4,
       label: 'AND',
       type: NODE_TYPE.CHIP,
       graphAL: [['5', 0, 0]],
@@ -41,14 +41,14 @@ export const DEFAULT_CIRCUIT_BOARD = {
       f: lib.VALUE (true),
     },
     '4': {
-      chipId: '2',
+      chipId: 3,
       label: 'NOT',
       type: NODE_TYPE.CHIP,
       graphAL: [['5', 0, 1]],
       f: lib.NOT,
     },
     '5': {
-      chipId: '3',
+      chipId: 5,
       label: 'OR',
       type: NODE_TYPE.CHIP,
       graphAL: [['6', 0, 0], ['7', 0, 0]],

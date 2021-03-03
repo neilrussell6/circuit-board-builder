@@ -36,5 +36,23 @@ export const DEFAULT_CHIPS = {
     inputs: [],
     outputs: [],
     id: 3,
+  },
+  4: {
+    name: 'AND',
+    description: 'Outputs true if both inputs are true.',
+    functionality: lib.AND,
+    truthTable: [],
+    inputs: [],
+    outputs: [],
+    id: 4,
+  },
+  5: {
+    name: 'OR',
+    description: 'Outputs true if either input is true.',
+    functionality: lib.OR,
+    truthTable: [],
+    inputs: [],
+    outputs: [],
+    id: 5,
   }
 }
