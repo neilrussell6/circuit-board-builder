@@ -9,4 +9,4 @@ export const circuitBoardNodesSelectors = createSelector (circuitBoardSelector, 
 
 export const selectedNodeIdSelector = prop ('selectedNodeId')
 
-export const selectDisplaySettings = prop ('displaySettings')
+export const displaySettingsSelector = prop ('displaySettings')

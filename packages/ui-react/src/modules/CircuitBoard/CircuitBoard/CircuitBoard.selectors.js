@@ -1,10 +1,10 @@
 import { createSelector } from '@reduxjs/toolkit'
 
 import { modeSelector } from '../../Mode/mode.selectors'
-import { selectDisplaySettings } from '../circuitBoard.selectors'
+import { displaySettingsSelector } from '../circuitBoard.selectors'
 
 export const CircuitBoardSelector = createSelector(
-  [modeSelector, selectDisplaySettings],
+  [modeSelector, displaySettingsSelector],
   (mode, displaySettings) => ({
     mode,
     displaySettings,
