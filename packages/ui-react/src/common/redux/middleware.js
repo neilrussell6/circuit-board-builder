@@ -1,6 +1,5 @@
-
-import { middleware as circuitBoardMiddleware } from '../../modules/CircuitBoard'
+import { selectNodeFlow } from '../../modules/CircuitBoard'
 
 export const middleware = [
-  circuitBoardMiddleware.selectNodeMiddleware,
+  selectNodeFlow(),
 ]

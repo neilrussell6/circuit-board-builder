@@ -42,7 +42,7 @@ describe ('modules/CircuitBoard/circuitBoard.selectors', () => {
     })
   })
 
-  describe ('circuitBoardNodesSelectors', () => {
+  describe ('circuitBoardNodesSelector', () => {
     it ('should select the circuit board nodes from state', () => {
       // given ... there is a circuit board with nodes in state
       const state = {
@@ -50,7 +50,7 @@ describe ('modules/CircuitBoard/circuitBoard.selectors', () => {
       }
 
       // when ... we select the circuit board nodes
-      const result = SUT.circuitBoardNodesSelectors (state)
+      const result = SUT.circuitBoardNodesSelector (state)
       assert.deepEqual (result, 'NODES')
     })
   })

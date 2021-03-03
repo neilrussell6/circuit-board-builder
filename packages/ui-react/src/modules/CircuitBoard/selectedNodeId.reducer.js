@@ -17,7 +17,7 @@ export const INITIAL_STATE = 0
 // action creators
 //---------------------------------
 
-export const selectedNodeIdSlice = createSlice({
+export const selectedNodeIdSlice = createSlice ({
   name,
   initialState: INITIAL_STATE,
   reducers: {
