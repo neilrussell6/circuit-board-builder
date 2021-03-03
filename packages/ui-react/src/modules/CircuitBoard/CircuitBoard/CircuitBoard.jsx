@@ -31,8 +31,9 @@ import * as d3 from 'd3'
 import styles from './CircuitBoard.module.css'
 import { SVG_HEIGHT, SVG_WIDTH, NODE_TYPE } from '../constants'
 import { MODE } from '../../Mode'
+import { Mode } from '../../Mode/components'
 
-export function CircuitBoard({ mode, setMode, displaySettings }) {
+export function CircuitBoard({ mode, displaySettings }) {
 
   // TODO: get from state
   const [circuitBoard, setCircuitBoard] = useState ({
@@ -365,13 +366,7 @@ export function CircuitBoard({ mode, setMode, displaySettings }) {
 
   return (
     <div className={styles.svgContainer}>
-      {/* TODO: move to dedicated component */}
-      <div className={styles.modeButtonGroup}>
-        MODE:
-        <button className={(mode === MODE.INTERACTIVE) ? styles.buttonSelected : styles.button} onClick={() => setMode (MODE.INTERACTIVE)}>INTERACTIVE</button>
-        <button className={(mode === MODE.UPDATE) ? styles.buttonSelected : styles.button} onClick={() => setMode (MODE.UPDATE)}>UPDATE</button>
-        <button className={(mode === MODE.DELETE) ? styles.buttonSelected : styles.button} onClick={() => setMode (MODE.DELETE)}>DELETE</button>
-      </div>
+      <Mode />
       <svg
         preserveAspectRatio="xMinYMin meet"
         viewBox={[-SVG_WIDTH / 2, -SVG_HEIGHT / 2, SVG_WIDTH, SVG_HEIGHT]}
