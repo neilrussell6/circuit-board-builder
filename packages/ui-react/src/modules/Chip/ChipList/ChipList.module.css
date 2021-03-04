@@ -4,16 +4,45 @@
 }
 
 .chip {
+  max-height: 20px;
+  min-height: 20px;
   cursor: pointer;
   margin: 10px 5px 10px 5px;
   padding: 10px;
   border: 1px solid black;
 }
 
-.selectedChipId {
+.selectedChip {
+  max-height: 20px;
+  min-height: 20px;
   cursor: pointer;
   margin: 10px 5px 10px 5px;
   padding: 10px;
   border: 1px solid green;
 }
 
+.detailsContainer {
+  z-index: 999;
+  background-color: var(--panel1-bg-color);
+  position: absolute;
+  left: 205px;
+  border: 1px solid green;
+  width: 300px;
+  padding: 10px;
+}
+
+.close {
+  cursor: pointer;
+  border: none;
+  color: var(--buttons-text-color-transparent);
+  float: right;
+  font-size: 24px;
+  background: var(--buttons-bg-color-transparent);
+}
+
+.close:hover,
+.close:focus {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}

@@ -5,9 +5,6 @@
   height: 100%;
 }
 
-.header {
-  height: 20px;
-}
 .main {
   flex: auto;
 }
