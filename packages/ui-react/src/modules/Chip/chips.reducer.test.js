@@ -1,7 +1,6 @@
 import { assert } from 'chai'
 
 import { reducer as SUT, setChips, INITIAL_STATE } from './chips.reducer'
-import { lib } from '@nr6/nand2tetris-logic-gates'
 
 describe ('modules/Chip/chips.reducer', () => {
   describe('setChips', () => {
