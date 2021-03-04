@@ -2,13 +2,14 @@ import { connect } from 'react-redux'
 
 import { CircuitBoard as CircuitBoardComponent } from './CircuitBoard'
 import { CircuitBoardSelector } from './CircuitBoard.selectors'
-import { setCircuitBoard, selectNode, updateNode, deleteNode } from '../circuitBoard.reducer'
+import { setCircuitBoard, updateNode, deleteNode } from '../circuitBoard.reducer'
+import { setSelectedNodeId } from '../selectedNodeId.reducer'
 
 const mapStateToProps = CircuitBoardSelector
 
 const mapDispatchToProps = dispatch => ({
   setCircuitBoard: circuitBoard => dispatch (setCircuitBoard (circuitBoard)),
-  selectNode: nodeId => dispatch (selectNode (nodeId)),
+  selectNode: nodeId => dispatch ( setSelectedNodeId(nodeId)),
   updateNode: nodeId => dispatch (updateNode (nodeId)),
   deleteNode: nodeId => dispatch (deleteNode (nodeId)),
 })

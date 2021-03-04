@@ -8,6 +8,14 @@ export const NODE_TYPE = {
     OUTPUT: 'output',
 }
 
+export const DEFAULT_BLANK_NODE = {
+  chipId: null,
+  label: '',
+  type: NODE_TYPE.CHIP,
+  graphAL: [],
+  f: () => null,
+}
+
 export const DEFAULT_CIRCUIT_BOARD = {
   start: ['0', '1', '3'],
   end: ['6', '7'],
