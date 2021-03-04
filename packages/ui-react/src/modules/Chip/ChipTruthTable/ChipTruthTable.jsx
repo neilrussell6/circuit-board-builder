@@ -16,7 +16,7 @@ export const ChipTruthTable = ({ truthTable }) => {
         }
         </tr>
       </thead>
-      <tbody>
+      <tbody className={styles.tbody}>
       { mapIndexed (
           (row, rowIndex) => (
             <tr key={`tr_${rowIndex}`}>

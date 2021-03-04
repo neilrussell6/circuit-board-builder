@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { prop } from 'ramda'
+import {always, equals, prop, when} from 'ramda'
 
 //---------------------------------
 // circuitBoardReducer name
@@ -21,7 +21,10 @@ export const selectedNodeIdSlice = createSlice ({
   name,
   initialState: INITIAL_STATE,
   reducers: {
-    setSelectedNodeId: (state, { payload }) => payload,
+    setSelectedNodeId: (state, { payload }) => when (
+      equals (state),
+      always ('0'),
+    ) (payload),
   },
 })
 

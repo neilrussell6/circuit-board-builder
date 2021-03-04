@@ -1,6 +1,7 @@
 import { assert } from 'chai'
 
 import * as SUT from './circuitBoard.selectors'
+import { DEFAULT_BLANK_NODE } from './constants'
 
 describe ('modules/CircuitBoard/circuitBoard.selectors', () => {
   describe ('circuitBoardSelector', () => {
@@ -78,6 +79,67 @@ describe ('modules/CircuitBoard/circuitBoard.selectors', () => {
       // when ... we select the display settings
       const result = SUT.displaySettingsSelector (state)
       assert.deepEqual (result, 'DISPLAY SETTINGS')
+    })
+  })
+
+  describe ('selectedNodeSelector', () => {
+    it ('should return blank node if no selected node id in state', () => {
+      // given
+      // ... there are nodes in state
+      // ... but there is no selected node id in state
+      const state = {
+        selectedNodeId: null,
+        circuitBoard: {
+          nodes: {
+            '1': {},
+          },
+        },
+      }
+
+      // when ... we select the selected node
+      const result = SUT.selectedNodeSelector (state)
+      assert.deepEqual(result, DEFAULT_BLANK_NODE)
+    })
+
+    it ('should return a blank node if the selected node id does not exist in the nodes in state', () => {
+      // given
+      // ... there are nodes in state
+      // ... but the selected node id is not in the nodes in state
+      const state = {
+        selectedNodeId: '100',
+        circuitBoard: {
+          nodes: {
+            '1': {},
+          },
+        },
+      }
+
+      // when ... we select the selected node
+      const result = SUT.selectedNodeSelector (state)
+
+      // then ... should return a blank node
+      assert.deepEqual(result, DEFAULT_BLANK_NODE)
+    })
+
+    it ('should return the selected node from state', () => {
+      // given
+      // ... there are nodes in state
+      // ... and the selected node id is in the node in state
+      const node = { some: 'data' }
+      const state = {
+        selectedNodeId: '1',
+        circuitBoard: {
+          nodes: {
+            '1': node,
+          },
+        },
+      }
+
+      // when ... we select the selected node
+      const result = SUT.selectedNodeSelector (state)
+
+      // then  ... should return selected node
+      assert.deepEqual(result, node)
     })
   })
 })

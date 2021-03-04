@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 
 import { ChipDetail as ChipDetailComponent } from './ChipDetail'
-import { ChipDetailSelector } from './ChipDetails.selectors'
+import { ChipDetailSelector } from './ChipDetail.selectors'
 
 const mapStateToProps = ChipDetailSelector
 

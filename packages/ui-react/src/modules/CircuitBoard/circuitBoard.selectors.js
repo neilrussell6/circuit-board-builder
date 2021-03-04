@@ -1,5 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit'
-import { prop } from 'ramda'
+import { prop, propOr } from 'ramda'
+
+import { DEFAULT_BLANK_NODE } from './constants'
 
 export const circuitBoardSelector = prop ('circuitBoard')
 
@@ -10,3 +12,8 @@ export const circuitBoardNodesSelector = createSelector (circuitBoardSelector, p
 export const selectedNodeIdSelector = prop ('selectedNodeId')
 
 export const displaySettingsSelector = prop ('displaySettings')
+
+export const selectedNodeSelector = createSelector(
+  [selectedNodeIdSelector, circuitBoardNodesSelector],
+  (nodeId, nodes) => propOr (DEFAULT_BLANK_NODE) (nodeId) (nodes),
+)
