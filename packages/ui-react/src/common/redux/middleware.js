@@ -1,5 +1,2 @@
-import { selectNodeFlow } from '../../modules/CircuitBoard'
 
-export const middleware = [
-  selectNodeFlow(),
-]
+export const middleware = []
