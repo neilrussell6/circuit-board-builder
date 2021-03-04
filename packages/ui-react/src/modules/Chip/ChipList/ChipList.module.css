@@ -17,3 +17,19 @@
   border: 1px solid green;
 }
 
+.close {
+  padding: 20px;
+  cursor: pointer;
+  border: none;
+  color: var(--buttons-text-color-transparent);
+  float: right;
+  font-size: 24px;
+  background: var(--buttons-bg-color-transparent);
+}
+
+.close:hover,
+.close:focus {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}

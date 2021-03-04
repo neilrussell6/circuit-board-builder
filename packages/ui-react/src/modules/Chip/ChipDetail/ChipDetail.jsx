@@ -6,7 +6,7 @@ import { ChipTruthTable } from '../ChipTruthTable/ChipTruthTable'
 export const ChipDetail = ({ chip }) => {
   const { id, name, description, truthTable, inputs, outputs } = chip
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.header}>{name}</div>
       <div className={styles.description}>{description}</div>
 

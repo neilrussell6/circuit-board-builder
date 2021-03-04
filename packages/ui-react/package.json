@@ -26,6 +26,7 @@
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.3.4",
     "@babel/register": "^7.9.0",
+    "@ijsto/react-slideout": "^0.1.2",
     "@nr6/nand2tetris-logic-gates": "^0.0.0",
     "@reduxjs/toolkit": "^1.5.0",
     "d3": "^6.5.0",
