@@ -1,7 +1,7 @@
 import { prop } from 'ramda'
 import { assert } from 'chai'
 
-import * as SUT from './ChipDetails.selectors'
+import * as SUT from './ChipDetail.selectors'
 import { DEFAULT_CHIPS } from '../constants'
 
 describe ('modules/Chip/ChipDetails/ChipDetails.selectors', () => {
