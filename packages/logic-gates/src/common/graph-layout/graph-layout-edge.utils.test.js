@@ -1,20 +1,9 @@
 const { assert } = require ('chai')
-const sinon = require ('sinon')
 const parametrize = require ('js-parametrize')
 
 const SUT = require ('./graph-layout-edge.utils')
 
 describe ('common/graph-layout/logic-gate.utils', () => {
-  let sandbox = null
-
-  beforeEach (async () => {
-    sandbox = await sinon.createSandbox ()
-  })
-
-  afterEach (async () => {
-    await sandbox.restore ()
-  })
-
   describe ('buildEdges', () => {
     parametrize ([
       //  (A/0)         (C/2)

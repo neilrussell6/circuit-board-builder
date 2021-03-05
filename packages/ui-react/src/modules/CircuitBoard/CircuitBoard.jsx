@@ -1,30 +1,15 @@
 import React, { useRef, useEffect, useState } from 'react'
 import { select, transition, easeLinear } from 'd3'
 import {
-  tap,
   find,
   propEq,
   filter,
-  pick,
-  mergeRight,
-  without,
   head,
   assoc,
   compose,
   map,
   prop,
   evolve,
-  omit,
-  reject,
-  flip,
-  includes,
-  isEmpty,
-  nth,
-  assocPath,
-  path,
-  zip,
-  equals,
-  concat,
 } from 'ramda'
 import {
   lib,
@@ -34,13 +19,13 @@ import {
   buildEdges,
   calculateGraphLevels,
   buildGraphLevelToVertexIndexMap,
-  findParents,
 } from '@nr6/nand2tetris-logic-gates'
 import * as d3 from 'd3'
 
 import styles from './CircuitBoard.module.css'
 import { SVG_HEIGHT, SVG_WIDTH, NODE_TYPE } from './constants'
 import { MODE } from '../App'
+import { attachDataToGraphUIEdges, attachDataToGraphUIVertices } from './circuit-board.utils'
 
 // TODO: get from state
 const displaySettings = {
@@ -49,6 +34,7 @@ const displaySettings = {
   edgeThickness: 1.4,
   edgeSpacing: 5,
   size: 20,
+  rectSize: 40,
 }
 
 export function CircuitBoard() {
@@ -138,45 +124,36 @@ export function CircuitBoard() {
 
     // transpose graph
     const transposedGraphAL = transposeGraphAdjacencyList (graphAL)
-    setTransposedGraphAL (transposedGraphAL)
-
-    // build vertices (coords) for D3
-    const { hspacing, vspacing } = displaySettings
-    const graphUIVertices = buildVertices (hspacing) (vspacing) (graphAL) (circuitBoard) (graphLevels) (graphLevelToVertexIndexMap)
-
-    // build edges (coords) for D3
-    const { edgeSpacing } = displaySettings
-    const graphUIEdges = buildEdges (edgeSpacing) (graphUIVertices) (graphAL) (transposedGraphAL)
+    setTransposedGraphAL (transposeGraphAdjacencyList (graphAL))
 
     // data
     let graphData = []
-    const callback = (vertexIndex, inputs, outputs) => {
-      graphData[vertexIndex] = { vertexIndex, inputs, outputs }
+    const callback = (vertexId, inputs, outputs) => {
+      graphData[vertexId] = { vertexId, inputs, outputs }
     }
     traverseWith (callback) (fs) (end) (transposedGraphAL)
 
-    // attach data to edges
-    const graphUIEdgesWithData = compose (
-      map (nth (0)),
-      map (x => {
-        const { sourceVertexId, sourceOutputIndex } = head (x)
-        return assocPath ([0, 'value']) (path ([sourceVertexId, 'outputs', sourceOutputIndex]) (graphData)) (x)
-      }),
-      zip (graphUIEdges),
-    ) (graphData)
+    // -----------------------------------------------
+    // display settings
+    // -----------------------------------------------
 
-    // attach data to vertices
-    // TODO: only associate value on INPUT and OUTPUT types
-    const graphUIVerticesWithData = compose (
-      map (x => {
-        const id = prop ('id') (x)
-        const _data = compose (pick (['label', 'type']), path (['nodes', id])) (circuitBoard)
-        return mergeRight (x) (_data)
-      }),
-      map (nth (0)),
-      map (x => assocPath ([0, 'value']) (path ([1, 'outputs', 0]) (x)) (x)),
-      zip (graphUIVertices),
-    ) (graphData)
+    const { hspacing, vspacing, edgeSpacing, rectSize } = displaySettings
+
+    // -----------------------------------------------
+    // vertices and edges with data
+    // -----------------------------------------------
+
+    // vertices
+    const graphUIVertices = buildVertices (hspacing) (vspacing) (graphAL) (circuitBoard) (graphLevels) (graphLevelToVertexIndexMap)
+    const graphUIVerticesWithData = attachDataToGraphUIVertices (graphData) (circuitBoard) (graphUIVertices)
+
+    // edges
+    const graphUIEdges = buildEdges (edgeSpacing) (graphUIVertices) (graphAL) (transposedGraphAL)
+    const graphUIEdgesWithData = attachDataToGraphUIEdges (graphData) (graphUIEdges)
+
+    // -----------------------------------------------
+    // SVG
+    // -----------------------------------------------
 
     // SVG
     const svg = select (svgRef.current)
@@ -286,9 +263,6 @@ export function CircuitBoard() {
       .selectAll ('rect')
       .data (gateVerticesWithData, prop ('id')) // use id instead of index to identify each vertex (from animations)
 
-    // TODO: move to display settings
-    const rectSize = 40
-
     gateVertices
       .join (
         enter => enter
@@ -375,7 +349,7 @@ export function CircuitBoard() {
   }, [mode, circuitBoard])
 
   const toggleValue = graphData => id => {
-    const currentValue = compose (head, prop ('outputs'), find (propEq ('vertexIndex') (id))) (graphData)
+    const currentValue = compose (head, prop ('outputs'), find (propEq ('vertexId') (id))) (graphData)
     const _data = evolve ({
       nodes: evolve ({
         [id]: x => assoc ('f') (currentValue ? lib.VALUE (false) : lib.VALUE (true)) (x),
