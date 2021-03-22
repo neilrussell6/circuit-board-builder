@@ -2,6 +2,8 @@ import { createSelector } from '@reduxjs/toolkit'
 import { prop, propOr } from 'ramda'
 
 import { DEFAULT_BLANK_NODE } from './constants'
+import { DEFAULT_BLANK_CHIP } from '../Chip/constants'
+import { chipsSelector } from '../Chip/chips.selectors'
 
 export const circuitBoardSelector = prop ('circuitBoard')
 
@@ -19,3 +21,8 @@ export const selectedNodeSelector = createSelector(
 )
 
 export const selectedNodeChipIdSelector = createSelector(selectedNodeSelector, prop ('chipId'))
+
+export const selectedNodeChipSelector = createSelector(
+  [selectedNodeChipIdSelector, chipsSelector],
+  (chipId, chips) => propOr (DEFAULT_BLANK_CHIP) (chipId) (chips),
+)

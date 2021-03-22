@@ -200,4 +200,7 @@ describe ('modules/CircuitBoard/circuitBoard.selectors', () => {
       assert.deepEqual(result, 10)
     })
   })
+
+  describe ('selectedNodeChipSelector', () => {
+  })
 })
