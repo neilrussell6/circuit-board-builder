@@ -9,11 +9,13 @@ describe ('modules/Chip/ChipList/ChipList.selectors', () => {
     it ('should select required props from state', () => {
       // given
       // ... there are chips in state
-      // ... and a selected chip id in state
+      // ... and a viewed chip id in state
+      // ... and a clicked chip id in state
       const state = {
         other: 'DATA',
         chips: DEFAULT_CHIPS,
         viewedChipId: 1,
+        clickedChipId: 2,
       }
 
       // when ... we select the required props
@@ -23,6 +25,7 @@ describe ('modules/Chip/ChipList/ChipList.selectors', () => {
       const expected = {
         chips: values (DEFAULT_CHIPS),
         viewedChipId: 1,
+        clickedChipId: 2,
       }
       assert.deepEqual(result, expected)
     })

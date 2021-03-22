@@ -82,7 +82,75 @@ describe ('modules/Chip/chips.selectors', () => {
       // when ... we select the viewed chip
       const result = SUT.viewedChipSelector (state)
 
-      // then  ... should return selected chip
+      // then  ... should return viewed chip
+      assert.deepEqual(result, chip)
+    })
+  })
+
+  describe ('clickedChipIdSelector', () => {
+    it ('should select clicked chip id from state', () => {
+      // given ... there is a clicked chip id in state
+      const state = {
+        clickedChipId: 1,
+      }
+
+      // when ... we select the clicked chip id from state
+      const result = SUT.clickedChipIdSelector (state)
+      assert.equal(result, 1)
+    })
+  })
+
+  describe ('clickedChipSelector', () => {
+    it ('should return blank chip if no clicked chip id in state', () => {
+      // given
+      // ... there are chips in state
+      // ... but there is no clicked chip id in state
+      const state = {
+        clickedChipId: null,
+        chips: DEFAULT_CHIPS,
+      }
+
+      // when ... we select the clicked chip
+      const result = SUT.clickedChipSelector (state)
+      assert.deepEqual(result, DEFAULT_BLANK_CHIP)
+    })
+
+    it ('should return a blank chip if the clicked chip id does not exist in the chips in state', () => {
+      // given
+      // ... there are chips in state
+      // ... but the clicked chip id is not in the chips in state
+      const state = {
+        clickedChipId: 100,
+        chips: DEFAULT_CHIPS,
+      }
+
+      // when ... we select the clicked chip
+      const result = SUT.clickedChipSelector (state)
+
+      // then ... should return a blank chip
+      assert.deepEqual(result, DEFAULT_BLANK_CHIP)
+    })
+
+    it ('should return the clicked chip from state', () => {
+      // given
+      // ... there are chips in state
+      // ... and the clicked chip id is in the chips in state
+      const chip = {
+        ...DEFAULT_BLANK_CHIP,
+        id: 100,
+      }
+      const state = {
+        clickedChipId: 100,
+        chips: {
+          ...DEFAULT_CHIPS,
+          '100': chip,
+        },
+      }
+
+      // when ... we select the clicked chip
+      const result = SUT.clickedChipSelector (state)
+
+      // then  ... should return clicked chip
       assert.deepEqual(result, chip)
     })
   })

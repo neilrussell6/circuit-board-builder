@@ -4,13 +4,18 @@ import {findIndex, map, propEq} from 'ramda'
 import styles from './ChipList.module.css'
 import { ChipDetail } from '../components'
 
-export const ChipSummary = ({ name, onClick, isSelected }) => (
-  <div className={isSelected ? styles.selectedChip : styles.chip} onClick={onClick}>
+export const ChipSummary = ({ chipId, name, onClick, onHover, isSelected }) => (
+  <div
+    className={isSelected ? styles.selectedChip : styles.chip}
+    onClick={() => onClick(chipId)}
+    onMouseOver={() => onHover(chipId)}
+    onMouseOut={() => onHover(0)}
+  >
     {name}
   </div>
 )
 
-export const ChipList = ({ viewedChipId, chips, onClick, onHover, showChips }) => {
+export const ChipList = ({ viewedChipId, clickedChipId, chips, onClick, onHover, showChips }) => {
   const [slideOutIsOpen, setSlideOutIsOpen] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
 
@@ -39,7 +44,7 @@ export const ChipList = ({ viewedChipId, chips, onClick, onHover, showChips }) =
   }
 
   const viewedChipIndex = findIndex (propEq ('id') (viewedChipId)) (chips)
-  const baseOffset = 69
+  const baseOffset = 68
   const slideOutOffset = (viewedChipIndex * 52) + baseOffset
 
   if (!isVisible) return null
@@ -48,7 +53,14 @@ export const ChipList = ({ viewedChipId, chips, onClick, onHover, showChips }) =
     <div>
       <div className={styles.header}>Chips</div>
       {map (({ id, name }) => (
-        <ChipSummary key={id} name={name} onClick={() => onHover(id)} isSelected={(viewedChipId === id)} />
+        <ChipSummary
+          key={id}
+          chipId={id}
+          name={name}
+          onClick={onClick}
+          onHover={onHover}
+          isSelected={(clickedChipId === id || viewedChipId === id)}
+        />
       )) (chips)}
 
       {slideOutIsOpen &&
