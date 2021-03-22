@@ -13,7 +13,7 @@ describe ('modules/Chip/ChipList/ChipList.selectors', () => {
       const state = {
         other: 'DATA',
         chips: DEFAULT_CHIPS,
-        selectedChipId: 1,
+        viewedChipId: 1,
       }
 
       // when ... we select the required props
@@ -22,7 +22,7 @@ describe ('modules/Chip/ChipList/ChipList.selectors', () => {
       // then ... should return expected data structure
       const expected = {
         chips: values (DEFAULT_CHIPS),
-        selectedChipId: 1,
+        viewedChipId: 1,
       }
       assert.deepEqual(result, expected)
     })

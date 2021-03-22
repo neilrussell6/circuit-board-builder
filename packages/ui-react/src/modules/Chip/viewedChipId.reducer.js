@@ -5,7 +5,7 @@ import {when, prop, equals, always} from 'ramda'
 // circuitBoardReducer name
 //---------------------------------
 
-const name = '[Selected Chip]'
+const name = '[Viewed Chip]'
 
 //---------------------------------
 // initial state
@@ -17,17 +17,17 @@ export const INITIAL_STATE = 0
 // action creators
 //---------------------------------
 
-export const selectedChipIdSlice = createSlice({
+export const viewedChipIdSlice = createSlice({
   name,
   initialState: INITIAL_STATE,
   reducers: {
-    setSelectedChipId: (state, { payload }) => when (
+    setViewedChipId: (state, { payload }) => when (
       equals (state),
       always (0),
     ) (payload),
   },
 })
 
-export const { setSelectedChipId } = prop ('actions') (selectedChipIdSlice)
+export const { setViewedChipId } = prop ('actions') (viewedChipIdSlice)
 
-export const { reducer } = selectedChipIdSlice
+export const { reducer } = viewedChipIdSlice

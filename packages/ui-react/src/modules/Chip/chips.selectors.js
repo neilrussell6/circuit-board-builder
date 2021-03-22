@@ -5,10 +5,10 @@ import { DEFAULT_BLANK_CHIP } from './constants'
 
 export const chipsSelector = prop ('chips')
 
-export const selectedChipIdSelector = prop ('selectedChipId')
+export const viewedChipIdSelector = prop ('viewedChipId')
 
-export const selectedChipSelector = createSelector (
-  [selectedChipIdSelector, chipsSelector],
+export const viewedChipSelector = createSelector (
+  [viewedChipIdSelector, chipsSelector],
   (chipId, chips) => pipe (
     values,
     find (propEq ('id', chipId)),

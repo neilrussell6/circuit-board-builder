@@ -9,10 +9,10 @@ describe ('modules/Chip/ChipDetails/ChipDetails.selectors', () => {
     it ('should select required props from state', () => {
       // given
       // ... there are chips in state
-      // ... and a selected chip id in state
+      // ... and a viewed chip id in state
       const state = {
         chips: DEFAULT_CHIPS,
-        selectedChipId: 1,
+        viewedChipId: 1,
       }
 
       // when ... we select the required props

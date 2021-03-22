@@ -19,68 +19,68 @@ describe ('modules/Chip/chips.selectors', () => {
     })
   })
 
-  describe ('selectedChipIdSelector', () => {
-    it ('should select selected chip id from state', () => {
-      // given ... there is a selected chip id in state
+  describe ('viewedChipIdSelector', () => {
+    it ('should select viewed chip id from state', () => {
+      // given ... there is a viewed chip id in state
       const state = {
-        selectedChipId: 1,
+        viewedChipId: 1,
       }
 
-      // when ... we select the selected chip id from state
-      const result = SUT.selectedChipIdSelector (state)
+      // when ... we select the viewed chip id from state
+      const result = SUT.viewedChipIdSelector (state)
       assert.equal(result, 1)
     })
   })
 
-  describe ('selectedChipSelector', () => {
-    it ('should return blank chip if no selected chip id in state', () => {
+  describe ('viewedChipSelector', () => {
+    it ('should return blank chip if no viewed chip id in state', () => {
       // given
       // ... there are chips in state
-      // ... but there is no selected chip id in state
+      // ... but there is no viewed chip id in state
       const state = {
-        selectedChipId: null,
+        viewedChipId: null,
         chips: DEFAULT_CHIPS,
       }
 
-      // when ... we select the selected chip
-      const result = SUT.selectedChipSelector (state)
+      // when ... we select the viewed chip
+      const result = SUT.viewedChipSelector (state)
       assert.deepEqual(result, DEFAULT_BLANK_CHIP)
     })
 
-    it ('should return a blank chip if the selected chip id does not exist in the chips in state', () => {
+    it ('should return a blank chip if the viewed chip id does not exist in the chips in state', () => {
       // given
       // ... there are chips in state
-      // ... but the selected chip id is not in the chips in state
+      // ... but the viewed chip id is not in the chips in state
       const state = {
-        selectedChipId: 100,
+        viewedChipId: 100,
         chips: DEFAULT_CHIPS,
       }
 
-      // when ... we select the selected chip
-      const result = SUT.selectedChipSelector (state)
+      // when ... we select the viewed chip
+      const result = SUT.viewedChipSelector (state)
 
       // then ... should return a blank chip
       assert.deepEqual(result, DEFAULT_BLANK_CHIP)
     })
 
-    it ('should return the selected chip from state', () => {
+    it ('should return the viewed chip from state', () => {
       // given
       // ... there are chips in state
-      // ... and the selected chip id is in the chips in state
+      // ... and the viewed chip id is in the chips in state
       const chip = {
         ...DEFAULT_BLANK_CHIP,
         id: 100,
       }
       const state = {
-        selectedChipId: 100,
+        viewedChipId: 100,
         chips: {
           ...DEFAULT_CHIPS,
           '100': chip,
         },
       }
 
-      // when ... we select the selected chip
-      const result = SUT.selectedChipSelector (state)
+      // when ... we select the viewed chip
+      const result = SUT.viewedChipSelector (state)
 
       // then  ... should return selected chip
       assert.deepEqual(result, chip)

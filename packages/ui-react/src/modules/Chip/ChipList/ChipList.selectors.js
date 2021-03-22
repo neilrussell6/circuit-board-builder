@@ -1,11 +1,11 @@
 import { createSelector } from '@reduxjs/toolkit'
 import { values } from 'ramda'
-import { chipsSelector, selectedChipIdSelector } from '../chips.selectors'
+import { chipsSelector, viewedChipIdSelector } from '../chips.selectors'
 
 export const ChipListSelector = createSelector (
-  [chipsSelector, selectedChipIdSelector],
-  (chips, selectedChipId) => ({
+  [chipsSelector, viewedChipIdSelector],
+  (chips, viewedChipId) => ({
     chips: values (chips),
-    selectedChipId,
+    viewedChipId: viewedChipId,
   }),
 )

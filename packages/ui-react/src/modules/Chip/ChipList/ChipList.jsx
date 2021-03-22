@@ -10,7 +10,7 @@ export const ChipSummary = ({ name, onClick, isSelected }) => (
   </div>
 )
 
-export const ChipList = ({ selectedChipId, chips, onSelect, showChips }) => {
+export const ChipList = ({ viewedChipId, chips, onClick, onHover, showChips }) => {
   const [slideOutIsOpen, setSlideOutIsOpen] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
 
@@ -23,12 +23,12 @@ export const ChipList = ({ selectedChipId, chips, onSelect, showChips }) => {
   }, [showChips])
 
   useEffect(() => {
-    if (selectedChipId === 0) {
+    if (viewedChipId === 0) {
       closeSlideOut()
     } else {
       openSlideOut()
     }
-  }, [selectedChipId])
+  }, [viewedChipId])
 
   const openSlideOut = () => {
     setSlideOutIsOpen(true)
@@ -38,9 +38,9 @@ export const ChipList = ({ selectedChipId, chips, onSelect, showChips }) => {
     setSlideOutIsOpen(false)
   }
 
-  const selectedChipIndex = findIndex (propEq ('id') (selectedChipId)) (chips)
+  const viewedChipIndex = findIndex (propEq ('id') (viewedChipId)) (chips)
   const baseOffset = 69
-  const slideOutOffset = (selectedChipIndex * 52) + baseOffset
+  const slideOutOffset = (viewedChipIndex * 52) + baseOffset
 
   if (!isVisible) return null
 
@@ -48,7 +48,7 @@ export const ChipList = ({ selectedChipId, chips, onSelect, showChips }) => {
     <div>
       <div className={styles.header}>Chips</div>
       {map (({ id, name }) => (
-        <ChipSummary key={id} name={name} onClick={() => onSelect(id)} isSelected={(selectedChipId === id)} />
+        <ChipSummary key={id} name={name} onClick={() => onHover(id)} isSelected={(viewedChipId === id)} />
       )) (chips)}
 
       {slideOutIsOpen &&
