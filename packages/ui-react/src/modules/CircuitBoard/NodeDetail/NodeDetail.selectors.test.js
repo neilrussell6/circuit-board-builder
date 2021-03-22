@@ -7,9 +7,14 @@ describe ('modules/CircuitBoard/NodeDetail/NodeDetails.selectors', () => {
     it ('should select required props from state', () => {
       // given
       // ... there are nodes in state
+      // ... and there are chips in state
       // ... and a selected node id in state
-      const node = { some: 'data' }
+      const chip = { id: 10, name: 'CHIP' }
+      const node = { id: 1, chipId: 10, label: 'NODE' }
       const state = {
+        chips: {
+          '10': chip,
+        },
         circuitBoard: {
           nodes: {
             '1': node,
@@ -21,7 +26,7 @@ describe ('modules/CircuitBoard/NodeDetail/NodeDetails.selectors', () => {
       // when ... we select the required props
       // then ... should return expected data structure
       const result = SUT.NodeDetailSelector (state)
-      assert.deepEqual(result, { node })
+      assert.deepEqual(result, { node, chip })
     })
   })
 })

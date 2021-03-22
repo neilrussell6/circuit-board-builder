@@ -1,10 +1,11 @@
 import { createSelector } from '@reduxjs/toolkit'
 
-import { selectedNodeSelector } from '../circuitBoard.selectors'
+import { selectedNodeSelector, selectedNodeChipSelector } from '../circuitBoard.selectors'
 
 export const NodeDetailSelector = createSelector(
-  [selectedNodeSelector],
-  node => ({
+  [selectedNodeSelector, selectedNodeChipSelector],
+  (node, chip) => ({
     node,
+    chip,
   }),
 )
