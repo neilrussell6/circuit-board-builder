@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react'
 import styles from './NodeDetail.module.css'
 import { NodeTruthTable } from '../NodeTruthTable/NodeTruthTable'
 
-export const NodeDetail = ({ node, chip, showDetails }) => {
+export const NodeDetail = ({ node, nodeInputs, chip, showDetails }) => {
   const [isVisible, setIsVisible] = useState(false)
   const { label } = node
   const { description, truthTable } = chip
@@ -25,7 +25,7 @@ export const NodeDetail = ({ node, chip, showDetails }) => {
 
       {(truthTable.length > 0) &&
       <div className={styles.truthTable}>
-        <NodeTruthTable truthTable={truthTable} />
+        <NodeTruthTable truthTable={truthTable} nodeInputs={nodeInputs} />
       </div>
       }
     </div>

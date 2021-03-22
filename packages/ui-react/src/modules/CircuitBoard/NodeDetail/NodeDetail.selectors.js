@@ -7,5 +7,6 @@ export const NodeDetailSelector = createSelector(
   (node, chip) => ({
     node,
     chip,
+    nodeInputs: { '0': 1, '1': 0 },
   }),
 )

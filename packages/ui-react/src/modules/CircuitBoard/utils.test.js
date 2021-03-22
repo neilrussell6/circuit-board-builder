@@ -46,4 +46,36 @@ describe ('modules/CircuitBoard/utils', () => {
       assert.equal (result, null)
     })
   })
+
+  describe ('isTruthTableRowIsActive', () => {
+    it ('should return false if node inputs do not match row', () => {
+      // given
+      // ... a node inputs object
+      // ... and a truth table row that does not match
+      const nodeInputs = {
+        '0': 1, '1': 0,
+      }
+      const truthTableRow = [0, 0, 0]
+
+      // when ... we check if the truth table row is active
+      // then ... should return false
+      const result = SUT.isTruthTableRowIsActive (nodeInputs) (truthTableRow)
+      assert.equal (result, false)
+    })
+
+    it ('should return true if node inputs match row', () => {
+      // given
+      // ... a node inputs object
+      // ... and a truth table row that matches
+      const nodeInputs = {
+        '0': 1, '1': 0,
+      }
+      const truthTableRow = [1, 0, 0]
+
+      // when ... we check if the truth table row is active
+      // then ... should return true
+      const result = SUT.isTruthTableRowIsActive (nodeInputs) (truthTableRow)
+      assert.equal (result, true)
+    })
+  })
 })

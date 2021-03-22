@@ -13,3 +13,9 @@
   flex: 1;
   text-align: center;
 }
+
+.truthTableActiveCell {
+  flex: 1;
+  text-align: center;
+  color: green;
+}

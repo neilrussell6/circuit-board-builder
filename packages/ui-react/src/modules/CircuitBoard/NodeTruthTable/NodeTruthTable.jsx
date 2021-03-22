@@ -2,8 +2,9 @@ import React from 'react'
 import { map, addIndex } from 'ramda'
 
 import styles from './NodeTruthTable.module.css'
+import { isTruthTableRowIsActive } from '../utils'
 
-export const NodeTruthTable = ({ truthTable }) => {
+export const NodeTruthTable = ({ truthTable, nodeInputs }) => {
   const mapIndexed = addIndex (map)
   const headers = truthTable[0]
   const values = truthTable.slice(1)
@@ -21,7 +22,11 @@ export const NodeTruthTable = ({ truthTable }) => {
         (row, rowIndex) => (
           <tr key={`tr_${rowIndex}`}>
             { mapIndexed (
-              (val, colIndex) => (<td className={styles.truthTableCell} key={`td_${rowIndex}_${colIndex}`}>{val}</td>)
+              (val, colIndex) => (
+                <td className={(isTruthTableRowIsActive (nodeInputs) (row)) ? styles.truthTableActiveCell : styles.truthTableCell} key={`td_${rowIndex}_${colIndex}`}>
+                  {val}
+                </td>
+              )
             ) (row) }
           </tr>
         )

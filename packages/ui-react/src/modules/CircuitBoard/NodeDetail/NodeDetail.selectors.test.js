@@ -26,7 +26,7 @@ describe ('modules/CircuitBoard/NodeDetail/NodeDetails.selectors', () => {
       // when ... we select the required props
       // then ... should return expected data structure
       const result = SUT.NodeDetailSelector (state)
-      assert.deepEqual(result, { node, chip })
+      assert.deepEqual(result, { node, chip, nodeInputs: { '0': 1, '1': 0 } })
     })
   })
 })
