@@ -246,7 +246,7 @@ export function CircuitBoard({
         return select (this).classed ('hover', false)
       })
       .on ('mousedown', function (e, { id }) {
-        if (mode === MODE.INTERACTIVE) {
+        if (mode === MODE.INTERACTIVE || mode === MODE.SELECT) {
           console.log ('SELECT NODE', id)
           selectNode (id)
         }

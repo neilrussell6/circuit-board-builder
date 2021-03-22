@@ -8,7 +8,7 @@ export const setClickedChipIdFlow = ({ dispatch, getState }) => next => async ac
   if (setClickedChipId.match(action)) {
     const { mode, clickedChipId, chips } = getState()
 
-    if (mode === MODE.INTERACTIVE && clickedChipId > 0) {
+    if (mode === MODE.SELECT && clickedChipId > 0) {
       const chip = chips[clickedChipId]
       const { circuitBoard } = chip
       dispatch(setCircuitBoard(circuitBoard))
