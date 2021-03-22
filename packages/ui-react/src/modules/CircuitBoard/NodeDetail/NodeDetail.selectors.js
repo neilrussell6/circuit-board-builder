@@ -7,6 +7,6 @@ export const NodeDetailSelector = createSelector(
   (node, chip) => ({
     node,
     chip,
-    nodeInputs: { '0': 1, '1': 0 },
+    nodeInputs: { '0': 1, '1': 0 }, // TODO: we need to get this object from circuit board in state
   }),
 )
