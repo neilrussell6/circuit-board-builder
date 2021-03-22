@@ -1,6 +1,6 @@
 import { setClickedChipId } from './clickedChipId.reducer'
 import { MODE } from '../Mode/mode.constants'
-import { setCircuitBoard } from '../CircuitBoard'
+import { setCircuitBoard, setSelectedNodeId } from '../CircuitBoard'
 
 export const setClickedChipIdFlow = ({ dispatch, getState }) => next => async action => {
   const result = next(action)
@@ -11,9 +11,9 @@ export const setClickedChipIdFlow = ({ dispatch, getState }) => next => async ac
     if (mode === MODE.SELECT && clickedChipId > 0) {
       const chip = chips[clickedChipId]
       const { circuitBoard } = chip
+      dispatch(setSelectedNodeId(0))
       dispatch(setCircuitBoard(circuitBoard))
     }
-
   }
 
   return result
