@@ -115,9 +115,8 @@ describe ('modules/CircuitBoard/circuitBoard.selectors', () => {
       }
 
       // when ... we select the selected node
-      const result = SUT.selectedNodeSelector (state)
-
       // then ... should return a blank node
+      const result = SUT.selectedNodeSelector (state)
       assert.deepEqual(result, DEFAULT_BLANK_NODE)
     })
 
@@ -136,10 +135,69 @@ describe ('modules/CircuitBoard/circuitBoard.selectors', () => {
       }
 
       // when ... we select the selected node
-      const result = SUT.selectedNodeSelector (state)
-
       // then  ... should return selected node
+      const result = SUT.selectedNodeSelector (state)
       assert.deepEqual(result, node)
+    })
+  })
+
+  describe ('selectedNodeChipIdSelector', () => {
+    it ('should return null if no selected node id in state', () => {
+      // given
+      // ... there are nodes in state
+      // ... but there is no selected node id in state
+      const state = {
+        selectedNodeId: null,
+        circuitBoard: {
+          nodes: {
+            '1': {},
+          },
+        },
+      }
+
+      // when ... we select the selected node's chip id
+      // then ... should return null
+      const result = SUT.selectedNodeChipIdSelector (state)
+      assert.deepEqual(result, null)
+    })
+
+    it ('should return a null if the selected node id does not exist in the nodes in state', () => {
+      // given
+      // ... there are nodes in state
+      // ... but the selected node id is not in the nodes in state
+      const state = {
+        selectedNodeId: '100',
+        circuitBoard: {
+          nodes: {
+            '1': {},
+          },
+        },
+      }
+
+      // when ... we select the selected node's chip id
+      // then ... should return null
+      const result = SUT.selectedNodeChipIdSelector (state)
+      assert.deepEqual(result, null)
+    })
+
+    it ('should return the selected node chip id from state', () => {
+      // given
+      // ... there are nodes in state
+      // ... and the selected node id is in the node in state
+      const node = { chipId: 10 }
+      const state = {
+        selectedNodeId: '1',
+        circuitBoard: {
+          nodes: {
+            '1': node,
+          },
+        },
+      }
+
+      // when ... we select the selected node's chip id
+      // then  ... should return correct chip id
+      const result = SUT.selectedNodeChipIdSelector (state)
+      assert.deepEqual(result, 10)
     })
   })
 })

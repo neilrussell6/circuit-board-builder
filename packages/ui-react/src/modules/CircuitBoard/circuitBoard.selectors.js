@@ -17,3 +17,5 @@ export const selectedNodeSelector = createSelector(
   [selectedNodeIdSelector, circuitBoardNodesSelector],
   (nodeId, nodes) => propOr (DEFAULT_BLANK_NODE) (nodeId) (nodes),
 )
+
+export const selectedNodeChipIdSelector = createSelector(selectedNodeSelector, prop ('chipId'))

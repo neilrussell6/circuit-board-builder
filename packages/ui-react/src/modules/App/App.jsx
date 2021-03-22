@@ -16,7 +16,7 @@ export function App() {
         <div className={styles.row}>
 
           {/* left */}
-          <div className={[isLeft ? styles.col : styles.colMin, styles.colLeft].join (' ')}>
+          <div className={[isLeft ? styles.colLeft : styles.colMin, styles.colLeft].join (' ')}>
             <button onClick={() => setIsLeft (isLeft ? false : true)}
                     className={[styles.button, styles.right].join (' ')}>
               {isLeft ? <CgChevronDoubleLeft/> : <CgChevronDoubleRight/>}
@@ -30,7 +30,7 @@ export function App() {
           </div>
 
           {/* right */}
-          <div className={[isRight ? styles.col : styles.colMin, styles.colRight].join (' ')}>
+          <div className={[isRight ? styles.colRight : styles.colMin, styles.colRight].join (' ')}>
             <button onClick={() => setIsRight (isRight ? false : true)} className={styles.button}>
               {isRight ? <CgChevronDoubleRight/> : <CgChevronDoubleLeft/>}
             </button>
