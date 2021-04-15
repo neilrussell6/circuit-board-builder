@@ -1,5 +1,4 @@
 const { find, propEq, prop, toPairs, pipe, reduce, add, chain, map, compose, pick, evolve, pluck, max, join } = require ('ramda')
-const { v4: uuid } = require ('uuid')
 
 //---------------------------------
 // build edges

@@ -1,0 +1,15 @@
+.truthTable {
+  width: 100%;
+  font-size: 20px;
+}
+
+.truthTableHeader {
+  flex: 1;
+  font-weight: bold;
+  text-align: center;
+}
+
+.truthTableCell {
+  flex: 1;
+  text-align: center;
+}

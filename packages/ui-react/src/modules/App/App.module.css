@@ -5,9 +5,6 @@
   height: 100%;
 }
 
-.header {
-  height: 20px;
-}
 .main {
   flex: auto;
 }
@@ -21,8 +18,13 @@
   height: 100%;
 }
 
-.col {
+.colLeft {
   width: 200px;
+  composes: mainCol from '../../index.module.css';
+  transition: width 0.2s; /* show */
+}
+.colRight {
+  width: 400px;
   composes: mainCol from '../../index.module.css';
   transition: width 0.2s; /* show */
 }

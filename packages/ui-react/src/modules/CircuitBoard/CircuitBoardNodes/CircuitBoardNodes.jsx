@@ -34,6 +34,7 @@ export function CircuitBoardNodes ({ displaySettings, data, circuitBoard, onClic
       // data
       graphData,
     } = data
+
     // -----------------------------------------------
     // display settings
     // -----------------------------------------------
