@@ -12,10 +12,10 @@
     "test:watch": "npm run _test -- --watch"
   },
   "devDependencies": {
-    "chai": "^4.3.0",
-    "js-parametrize": "0.0.4",
-    "mocha": "^8.2.1",
-    "sinon": "^9.2.4"
+    "chai": "^4.3.4",
+    "js-parametrize": "^0.0.4",
+    "mocha": "^8.3.2",
+    "sinon": "^10.0.0"
   },
   "dependencies": {
     "ramda": "^0.27.1"
