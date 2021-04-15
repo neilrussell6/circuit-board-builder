@@ -19,7 +19,6 @@ export const DEFAULT_BLANK_CHIP = {
 }
 
 export const CHIP_IDS = {
-  ID: 1,
   NAND: 2,
   NOT: 3,
   AND: 4,
@@ -35,15 +34,6 @@ export const CHIP_IDS = {
 }
 
 const CHIP_DATA = {
-  ID: {
-    start: ['0'],
-    end: ['2'],
-    nodes: {
-      '0': { chipId: null, label: '', type: NODE_TYPE.INPUT, graphAL: [['1', 0, 0]], f: lib.VALUE (true) },
-      '1': { chipId: CHIP_IDS.ID, label: 'ID', type: NODE_TYPE.CHIP, graphAL: [['2', 0, 0]], f: lib.ID },
-      '2': { chipId: null, label: '', type: NODE_TYPE.OUTPUT, graphAL: [], f: lib.ID },
-    },
-  },
   NOT: {
     start: ['0'],
     end: ['2'],
@@ -83,6 +73,16 @@ const CHIP_DATA = {
       '3': { chipId: null, label: '', type: NODE_TYPE.OUTPUT, graphAL: [], f: lib.ID },
     },
   },
+  XOR: {
+    start: ['0', '1'],
+    end: ['3'],
+    nodes: {
+      '0': { chipId: null, label: '', type: NODE_TYPE.INPUT, graphAL: [['2', 0, 0]], f: lib.VALUE (true) },
+      '1': { chipId: null, label: '', type: NODE_TYPE.INPUT, graphAL: [['2', 0, 1]], f: lib.VALUE (false) },
+      '2': { chipId: CHIP_IDS.XOR, label: 'XOR', type: NODE_TYPE.CHIP, graphAL: [['3', 0, 0]], f: lib.XOR },
+      '3': { chipId: null, label: '', type: NODE_TYPE.OUTPUT, graphAL: [], f: lib.ID },
+    },
+  },
   MUX: {
     start: ['0', '1', '2'],
     end: ['4'],
@@ -100,7 +100,7 @@ const CHIP_DATA = {
     nodes: {
       '0': { chipId: null, label: '', type: NODE_TYPE.INPUT, graphAL: [['2', 0, 0]], f: lib.VALUE (true) },
       '1': { chipId: null, label: '', type: NODE_TYPE.INPUT, graphAL: [['2', 0, 1]], f: lib.VALUE (false) },
-      '2': { chipId: CHIP_IDS.DMUX, label: 'DMUX', type: NODE_TYPE.CHIP, graphAL: [['3', 0, 0], ['4', 0, 0]], f: lib.DMUX },
+      '2': { chipId: CHIP_IDS.DMUX, label: 'DMUX', type: NODE_TYPE.CHIP, graphAL: [['3', 0, 0], ['4', 1, 0]], f: lib.DMUX },
       '3': { chipId: null, label: '', type: NODE_TYPE.OUTPUT, graphAL: [], f: lib.ID },
       '4': { chipId: null, label: '', type: NODE_TYPE.OUTPUT, graphAL: [], f: lib.ID,
       },
@@ -161,15 +161,15 @@ const CHIP_DATA = {
     start: ['IN1', 'IN2', 'IN3'],
     end: ['OUT1', 'OUT2'],
     nodes: {
-      'IN1': { chipId: null, label: '', type: NODE_TYPE.INPUT, graphAL: [['XOR', 0, 0]], f: lib.VALUE (true) },
+      'IN1': { chipId: null, label: '', type: NODE_TYPE.INPUT, graphAL: [['NOT1', 0, 0]], f: lib.VALUE (true) },
       'IN2': { chipId: null, label: '', type: NODE_TYPE.INPUT, graphAL: [['SPLIT1', 0, 0]], f: lib.VALUE (true) },
       'IN3': { chipId: null, label: '', type: NODE_TYPE.INPUT, graphAL: [['EXT1', 0, 0]], f: lib.VALUE (true) },
-      'XOR': { chipId: CHIP_IDS.XOR, label: 'XOR', type: NODE_TYPE.CHIP, graphAL: [['OR', 0, 0]], f: lib.XOR },
-      'SPLIT1': { chipId: null, label: '', type: NODE_TYPE.SPLITTER, graphAL: [['OR', 0, 1], ['NAND', 0, 0]], f: lib.ID },
+      'NOT1': { chipId: CHIP_IDS.NOT, label: 'NOT', type: NODE_TYPE.CHIP, graphAL: [['XOR', 0, 0]], f: lib.NOT },
+      'SPLIT1': { chipId: null, label: '', type: NODE_TYPE.SPLITTER, graphAL: [['XOR', 0, 1], ['NAND', 0, 0]], f: lib.ID },
       'EXT1': { chipId: null, label: '', type: NODE_TYPE.EXTENSION, graphAL: [['NAND', 0, 1]], f: lib.ID },
-      'OR': { chipId: CHIP_IDS.OR, label: 'OR', type: NODE_TYPE.CHIP, graphAL: [['NOT', 0, 0]], f: lib.OR },
+      'XOR': { chipId: CHIP_IDS.XOR, label: 'XOR', type: NODE_TYPE.CHIP, graphAL: [['NOT2', 0, 0]], f: lib.XOR },
       'NAND': { chipId: CHIP_IDS.NAND, label: 'NAND', type: NODE_TYPE.CHIP, graphAL: [['EXT2', 0, 0]], f: lib.NAND },
-      'NOT': { chipId: CHIP_IDS.NOT, label: 'NOT', type: NODE_TYPE.CHIP, graphAL: [['OUT1', 0, 0]], f: lib.NOT },
+      'NOT2': { chipId: CHIP_IDS.NOT, label: 'NOT', type: NODE_TYPE.CHIP, graphAL: [['OUT1', 0, 0]], f: lib.NOT },
       'EXT2': { chipId: null, label: '', type: NODE_TYPE.EXTENSION, graphAL: [['OUT2', 0, 0]], f: lib.ID },
       'OUT1': { chipId: null, label: '', type: NODE_TYPE.OUTPUT, graphAL: [], f: lib.ID },
       'OUT2': { chipId: null, label: '', type: NODE_TYPE.OUTPUT, graphAL: [], f: lib.ID },
@@ -180,20 +180,6 @@ const CHIP_DATA = {
 export const CHIP_CIRCUIT_BOARDS = CHIP_DATA
 
 export const DEFAULT_CHIPS = {
-  [CHIP_IDS.ID]: {
-    name: 'ID',
-    description: 'Outputs the same value as the input.',
-    functionality: lib.ID,
-    truthTable: [
-      ['in', 'out'],
-      [0, 0],
-      [1, 1],
-    ],
-    inputs: ['in'],
-    outputs: ['out'],
-    circuitBoard: CHIP_CIRCUIT_BOARDS.ID,
-    id: CHIP_IDS.ID,
-  },
   [CHIP_IDS.NAND]: {
     name: 'NAND',
     description: 'Outputs true unless both inputs are true',
@@ -255,6 +241,22 @@ export const DEFAULT_CHIPS = {
     outputs: ['out'],
     circuitBoard: CHIP_CIRCUIT_BOARDS.OR,
     id: CHIP_IDS.OR,
+  },
+  [CHIP_IDS.XOR]: {
+    name: 'XOR',
+    description: 'Outputs true if only one of the inputs is true, but not both.',
+    functionality: lib.XOR,
+    truthTable: [
+      ['a', 'b', 'out'],
+      [0, 0, 0],
+      [0, 1, 1],
+      [1, 0, 1],
+      [1, 1, 0],
+    ],
+    inputs: ['a', 'b'],
+    outputs: ['out'],
+    circuitBoard: CHIP_CIRCUIT_BOARDS.XOR,
+    id: CHIP_IDS.XOR,
   },
   [CHIP_IDS.MUX]: {
     name: 'MUX',

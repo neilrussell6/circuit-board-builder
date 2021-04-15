@@ -18,6 +18,7 @@ export const INITIAL_STATE = {
   edgeSpacing: 5,
   size: 20,
   rectSize: 40,
+  xOffset: -60,
 }
 
 //---------------------------------

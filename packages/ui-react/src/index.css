@@ -1,5 +1,12 @@
 /* common */
 
+* {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 html, body, #root {
   margin: 0;
   padding: 0;

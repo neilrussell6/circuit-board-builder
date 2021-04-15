@@ -157,9 +157,8 @@ const removeEmptyLevels = circuitBoard => {
   // find ids on empty levels
   const levels = calculateGraphLevels (prop ('start') (circuitBoard)) (graphAL)
   const levelMap = (invert) (levels)
-  const significantTypes = [NODE_TYPE.CHIP, NODE_TYPE.SPLITTER]
   // TODO: we need to remove SPLITTERS on empty rows, but we need to ensure their parents then split, so use the below and update reconnectNodesAffectedByRemoval
-  // const significantTypes = [NODE_TYPE.CHIP]
+  const significantTypes = [NODE_TYPE.CHIP]
   const emptyLevels = findEmptyLevels (significantTypes) (circuitBoard) (levelMap)
   const emptyLevelRemoveIds = compose (uniq, flatten, values, pick (emptyLevels)) (levelMap)
 
@@ -175,7 +174,7 @@ const removeEmptyPaths = circuitBoard => {
   const transposedGraphAL = transposeGraphAdjacencyList (graphAL)
   const boardInputIds = prop ('start') (circuitBoard)
   const boardOutputIds = prop ('end') (circuitBoard)
-  const significantTypes = [NODE_TYPE.CHIP, NODE_TYPE.SPLITTER]
+  const significantTypes = [NODE_TYPE.CHIP]
 
   // find ids on empty paths
   const paths = map (id => bfsAll (boardInputIds) (noop) (map (nth (0))) (id) (transposedGraphAL)) (boardOutputIds)

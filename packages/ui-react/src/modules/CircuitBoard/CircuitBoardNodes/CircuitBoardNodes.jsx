@@ -39,7 +39,7 @@ export function CircuitBoardNodes ({ displaySettings, data, circuitBoard, onClic
     // display settings
     // -----------------------------------------------
 
-    const { hspacing, vspacing, edgeSpacing, rectSize } = displaySettings
+    const { hspacing, vspacing, edgeSpacing, rectSize, xOffset: svgXOffset } = displaySettings
 
     // -----------------------------------------------
     // vertices and edges with data
@@ -82,10 +82,10 @@ export function CircuitBoardNodes ({ displaySettings, data, circuitBoard, onClic
 
     const line = d3.line ().context (null)
     const drawSegmentedEdge = ({ source, target }) => {
-      const s1 = [source.x - newXOffset, source.y]
-      const s2 = [(source.x - newXOffset) + (hspacing / 3), source.y]
-      const s3 = [(target.x - newXOffset) - (hspacing / 3), target.y]
-      const s4 = [target.x - newXOffset, target.y]
+      const s1 = [source.x - newXOffset + svgXOffset, source.y]
+      const s2 = [(source.x - newXOffset + svgXOffset) + (hspacing / 3), source.y]
+      const s3 = [(target.x - newXOffset + svgXOffset) - (hspacing / 3), target.y]
+      const s4 = [target.x - newXOffset + svgXOffset, target.y]
       return line ([s1, s2, s3, s4])
     }
 
@@ -144,7 +144,7 @@ export function CircuitBoardNodes ({ displaySettings, data, circuitBoard, onClic
         enter => enter
           .append ('circle')
           .attr ('class', ({ type }) => `circle ${type}`)
-          .attr ('cx', ({ x }) => x - newXOffset)
+          .attr ('cx', ({ x }) => x - newXOffset + svgXOffset)
           .attr ('cy', prop ('y'))
           .classed ('active', prop ('value'))
           .call (enter => enter.transition (t)
@@ -154,7 +154,7 @@ export function CircuitBoardNodes ({ displaySettings, data, circuitBoard, onClic
           .attr ('r', ({ type }) => prop (type) (vertexCirlceRadiusMap))
           .classed ('active', prop ('value'))
           .call (update => update.transition (td)
-            .attr ('cx', ({ x }) => x - newXOffset)
+            .attr ('cx', ({ x }) => x - newXOffset + svgXOffset)
             .attr ('cy', prop ('y')),
           ),
         exit => exit
@@ -184,9 +184,9 @@ export function CircuitBoardNodes ({ displaySettings, data, circuitBoard, onClic
         enter => enter
           .append ('rect')
           .attr ('class', 'rect chip')
-          .attr ('width', rectSize)
+          .attr ('width', rectSize * 1.5)
           .attr ('height', rectSize)
-          .attr ('x', ({ x }) => x - (rectSize / 2) - newXOffset)
+          .attr ('x', ({ x }) => x - ((rectSize * 1.5) / 2) - newXOffset + svgXOffset)
           .attr ('y', ({ y }) => y - (rectSize / 2))
           .classed ('active', prop ('value'))
           .call (enter => enter.transition (t)
@@ -195,14 +195,14 @@ export function CircuitBoardNodes ({ displaySettings, data, circuitBoard, onClic
         update => update
           .classed ('active', prop ('value'))
           .call (update => update.transition (td)
-            .attr ('x', ({ x }) => x - (rectSize / 2) - newXOffset)
+            .attr ('x', ({ x }) => x - ((rectSize * 1.5) / 2) - newXOffset + svgXOffset)
             .attr ('y', ({ y }) => y - (rectSize / 2)),
           ),
         exit => exit
           .call (exit => exit.transition (t)
-            .attr ('x', ({ x }) => x - xOffset - (rectSize / 4))
+            .attr ('x', ({ x }) => x - xOffset - ((rectSize * 1.5) / 4) + svgXOffset)
             .attr ('y', ({ y }) => y - (rectSize / 4))
-            .attr ('width', rectSize / 2)
+            .attr ('width', (rectSize * 1.5) / 2)
             .attr ('height', rectSize / 2)
             .remove (),
           ),
@@ -226,7 +226,7 @@ export function CircuitBoardNodes ({ displaySettings, data, circuitBoard, onClic
         enter => enter
           .append ('text')
           .attr ('class', 'text chip')
-          .attr ('x', ({ x }) => x - newXOffset)
+          .attr ('x', ({ x }) => x - newXOffset + svgXOffset)
           .attr ('y', ({ y }) => y)
           .attr ('dominant-baseline', 'middle')
           .attr ('text-anchor', 'middle')
@@ -240,12 +240,12 @@ export function CircuitBoardNodes ({ displaySettings, data, circuitBoard, onClic
           ),
         update => update
           .call (update => update.transition (td)
-            .attr ('x', ({ x }) => x - newXOffset)
+            .attr ('x', ({ x }) => x - newXOffset + svgXOffset)
             .attr ('y', ({ y }) => y),
           ),
         exit => exit
           .call (exit => exit.transition (t2)
-            .attr ('x', ({ x }) => x - xOffset)
+            .attr ('x', ({ x }) => x - xOffset + svgXOffset)
             .attr ('y', ({ y }) => y)
             .attr ('opacity', 0)
             .remove (),

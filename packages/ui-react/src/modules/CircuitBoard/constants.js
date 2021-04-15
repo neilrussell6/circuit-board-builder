@@ -1,6 +1,6 @@
 import { CHIP_CIRCUIT_BOARDS } from '../Chip/constants'
 
-export const SVG_WIDTH = 1280
+export const SVG_WIDTH = 980
 export const SVG_HEIGHT = 220
 export const NODE_TYPE = {
   INPUT: 'input',
