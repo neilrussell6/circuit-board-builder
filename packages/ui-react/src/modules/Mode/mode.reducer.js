@@ -19,7 +19,7 @@ export const INITIAL_STATE = MODE.INTERACTIVE
 // action creators
 //---------------------------------
 
-export const modeSlice = createSlice({
+export const modeSlice = createSlice ({
   name,
   initialState: INITIAL_STATE,
   reducers: {

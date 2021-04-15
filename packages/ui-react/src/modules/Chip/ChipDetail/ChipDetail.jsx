@@ -4,7 +4,7 @@ import styles from './ChipDetail.module.css'
 import { ChipTruthTable } from '../ChipTruthTable/ChipTruthTable'
 
 export const ChipDetail = ({ chip }) => {
-  const { id, name, description, truthTable, inputs, outputs } = chip
+  const { name, description, truthTable } = chip // id, name, description, truthTable, inputs, outputs
   return (
     <div>
       <div className={styles.header}>{name}</div>

@@ -34,14 +34,14 @@ import { MODE } from '../../Mode'
 import { Mode } from '../../Mode/components'
 
 export function CircuitBoard({
-  mode,
-  displaySettings,
-  circuitBoard,
-  setCircuitBoard,
-  selectNode,
-  updateNode,
-  deleteNode,
-}) {
+                               mode,
+                               displaySettings,
+                               circuitBoard,
+                               setCircuitBoard,
+                               selectNode,
+                               updateNode,
+                               deleteNode,
+                             }) {
   const [graphAL, setGraphAL] = useState ()
   const [transposedGraphAL, setTransposedGraphAL] = useState ()
   const [xOffset, setXOffset] = useState (0)
@@ -311,7 +311,7 @@ export function CircuitBoard({
 
   return (
     <div className={styles.svgContainer}>
-      <Mode />
+      <Mode/>
       <svg
         preserveAspectRatio="xMinYMin meet"
         viewBox={[-SVG_WIDTH / 2, -SVG_HEIGHT / 2, SVG_WIDTH, SVG_HEIGHT]}

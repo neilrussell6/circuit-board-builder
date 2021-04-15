@@ -20,9 +20,9 @@ describe ('modules/Chip/ChipDetails/ChipDetails.selectors', () => {
 
       // then ... should return expected data structure
       const expected = {
-        chip: prop('1', DEFAULT_CHIPS),
+        chip: prop ('1') (DEFAULT_CHIPS),
       }
-      assert.deepEqual(result, expected)
+      assert.deepEqual (result, expected)
     })
   })
 })

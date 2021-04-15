@@ -15,14 +15,14 @@ export const selectedNodeIdSelector = prop ('selectedNodeId')
 
 export const displaySettingsSelector = prop ('displaySettings')
 
-export const selectedNodeSelector = createSelector(
+export const selectedNodeSelector = createSelector (
   [selectedNodeIdSelector, circuitBoardNodesSelector],
   (nodeId, nodes) => propOr (DEFAULT_BLANK_NODE) (nodeId) (nodes),
 )
 
-export const selectedNodeChipIdSelector = createSelector(selectedNodeSelector, prop ('chipId'))
+export const selectedNodeChipIdSelector = createSelector (selectedNodeSelector, prop ('chipId'))
 
-export const selectedNodeChipSelector = createSelector(
+export const selectedNodeChipSelector = createSelector (
   [selectedNodeChipIdSelector, chipsSelector],
   (chipId, chips) => propOr (DEFAULT_BLANK_CHIP) (chipId) (chips),
 )

@@ -23,7 +23,7 @@ export const INITIAL_STATE = {
 // action creators
 //---------------------------------
 
-export const displaySettingsSlice = createSlice({
+export const displaySettingsSlice = createSlice ({
   name,
   initialState: INITIAL_STATE,
   reducers: {

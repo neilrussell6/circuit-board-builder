@@ -9,7 +9,7 @@ const mapStateToProps = CircuitBoardSelector
 
 const mapDispatchToProps = dispatch => ({
   setCircuitBoard: circuitBoard => dispatch (setCircuitBoard (circuitBoard)),
-  selectNode: nodeId => dispatch ( setSelectedNodeId(nodeId)),
+  selectNode: nodeId => dispatch (setSelectedNodeId (nodeId)),
   updateNode: nodeId => dispatch (updateNode (nodeId)),
   deleteNode: nodeId => dispatch (deleteNode (nodeId)),
 })

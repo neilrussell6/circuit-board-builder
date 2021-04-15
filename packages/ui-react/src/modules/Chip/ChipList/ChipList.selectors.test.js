@@ -27,7 +27,7 @@ describe ('modules/Chip/ChipList/ChipList.selectors', () => {
         viewedChipId: 1,
         clickedChipId: 2,
       }
-      assert.deepEqual(result, expected)
+      assert.deepEqual (result, expected)
     })
   })
 })

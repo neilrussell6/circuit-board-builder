@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import {always, equals, prop, when} from 'ramda'
+import { always, equals, prop, when } from 'ramda'
 
 //---------------------------------
 // circuitBoardReducer name

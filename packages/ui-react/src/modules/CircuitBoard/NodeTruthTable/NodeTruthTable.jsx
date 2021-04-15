@@ -7,29 +7,32 @@ import { isTruthTableRowIsActive } from '../utils'
 export const NodeTruthTable = ({ truthTable, nodeInputs }) => {
   const mapIndexed = addIndex (map)
   const headers = truthTable[0]
-  const values = truthTable.slice(1)
+  const values = truthTable.slice (1)
   return (
     <table className={styles.truthTable}>
       <thead>
       <tr key="tr">
         {
-          mapIndexed ((val, index) => (<td className={styles.truthTableHeader} key={`th_${index}`}>{val}</td>)) (headers)
+          mapIndexed ((val, index) => (
+            <td className={styles.truthTableHeader} key={`th_${index}`}>{val}</td>)) (headers)
         }
       </tr>
       </thead>
       <tbody className={styles.tbody}>
-      { mapIndexed (
+      {mapIndexed (
         (row, rowIndex) => (
           <tr key={`tr_${rowIndex}`}>
-            { mapIndexed (
+            {mapIndexed (
               (val, colIndex) => (
-                <td className={(isTruthTableRowIsActive (nodeInputs) (row)) ? styles.truthTableActiveCell : styles.truthTableCell} key={`td_${rowIndex}_${colIndex}`}>
+                <td
+                  className={(isTruthTableRowIsActive (nodeInputs) (row)) ? styles.truthTableActiveCell : styles.truthTableCell}
+                  key={`td_${rowIndex}_${colIndex}`}>
                   {val}
                 </td>
-              )
-            ) (row) }
+              ),
+            ) (row)}
           </tr>
-        )
+        ),
       ) (values)
       }
       </tbody>

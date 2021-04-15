@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import {when, prop, equals, always} from 'ramda'
+import { when, prop, equals, always } from 'ramda'
 
 //---------------------------------
 // circuitBoardReducer name
@@ -17,7 +17,7 @@ export const INITIAL_STATE = 0
 // action creators
 //---------------------------------
 
-export const viewedChipIdSlice = createSlice({
+export const viewedChipIdSlice = createSlice ({
   name,
   initialState: INITIAL_STATE,
   reducers: {

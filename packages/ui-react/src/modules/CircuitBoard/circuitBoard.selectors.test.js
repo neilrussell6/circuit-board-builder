@@ -48,7 +48,7 @@ describe ('modules/CircuitBoard/circuitBoard.selectors', () => {
     it ('should select the circuit board nodes from state', () => {
       // given ... there is a circuit board with nodes in state
       const state = {
-        circuitBoard: { nodes: 'NODES' }
+        circuitBoard: { nodes: 'NODES' },
       }
 
       // when ... we select the circuit board nodes
@@ -99,7 +99,7 @@ describe ('modules/CircuitBoard/circuitBoard.selectors', () => {
 
       // when ... we select the selected node
       const result = SUT.selectedNodeSelector (state)
-      assert.deepEqual(result, DEFAULT_BLANK_NODE)
+      assert.deepEqual (result, DEFAULT_BLANK_NODE)
     })
 
     it ('should return a blank node if the selected node id does not exist in the nodes in state', () => {
@@ -118,7 +118,7 @@ describe ('modules/CircuitBoard/circuitBoard.selectors', () => {
       // when ... we select the selected node
       // then ... should return a blank node
       const result = SUT.selectedNodeSelector (state)
-      assert.deepEqual(result, DEFAULT_BLANK_NODE)
+      assert.deepEqual (result, DEFAULT_BLANK_NODE)
     })
 
     it ('should return the selected node from state', () => {
@@ -138,7 +138,7 @@ describe ('modules/CircuitBoard/circuitBoard.selectors', () => {
       // when ... we select the selected node
       // then  ... should return selected node
       const result = SUT.selectedNodeSelector (state)
-      assert.deepEqual(result, node)
+      assert.deepEqual (result, node)
     })
   })
 
@@ -159,7 +159,7 @@ describe ('modules/CircuitBoard/circuitBoard.selectors', () => {
       // when ... we select the selected node's chip id
       // then ... should return null
       const result = SUT.selectedNodeChipIdSelector (state)
-      assert.deepEqual(result, null)
+      assert.deepEqual (result, null)
     })
 
     it ('should return a null if the selected node id does not exist in the nodes in state', () => {
@@ -178,7 +178,7 @@ describe ('modules/CircuitBoard/circuitBoard.selectors', () => {
       // when ... we select the selected node's chip id
       // then ... should return null
       const result = SUT.selectedNodeChipIdSelector (state)
-      assert.deepEqual(result, null)
+      assert.deepEqual (result, null)
     })
 
     it ('should return the selected node chip id from state', () => {
@@ -198,7 +198,7 @@ describe ('modules/CircuitBoard/circuitBoard.selectors', () => {
       // when ... we select the selected node's chip id
       // then  ... should return correct chip id
       const result = SUT.selectedNodeChipIdSelector (state)
-      assert.deepEqual(result, 10)
+      assert.deepEqual (result, 10)
     })
   })
 
@@ -224,7 +224,7 @@ describe ('modules/CircuitBoard/circuitBoard.selectors', () => {
       // when ... we select the selected node's chip
       // then ... should return blank chip
       const result = SUT.selectedNodeChipSelector (state)
-      assert.deepEqual(result, DEFAULT_BLANK_CHIP)
+      assert.deepEqual (result, DEFAULT_BLANK_CHIP)
     })
 
     it ('should return a blank chip if the selected node id does not exist in the nodes in state', () => {
@@ -248,7 +248,7 @@ describe ('modules/CircuitBoard/circuitBoard.selectors', () => {
       // when ... we select the selected node's chip
       // then ... should return blank chip
       const result = SUT.selectedNodeChipSelector (state)
-      assert.deepEqual(result, DEFAULT_BLANK_CHIP)
+      assert.deepEqual (result, DEFAULT_BLANK_CHIP)
     })
 
     it ('should return the selected node chip from state', () => {
@@ -273,7 +273,7 @@ describe ('modules/CircuitBoard/circuitBoard.selectors', () => {
       // when ... we select the selected node's chip
       // then  ... should return correct chip
       const result = SUT.selectedNodeChipSelector (state)
-      assert.deepEqual(result, chip)
+      assert.deepEqual (result, chip)
     })
   })
 })

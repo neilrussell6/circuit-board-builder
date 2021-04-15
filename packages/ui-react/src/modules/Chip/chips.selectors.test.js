@@ -15,7 +15,7 @@ describe ('modules/Chip/chips.selectors', () => {
       const result = SUT.chipsSelector (state)
 
       // then ... should return a blank chip
-      assert.deepEqual(result, { 1: 'CHIP' })
+      assert.deepEqual (result, { 1: 'CHIP' })
     })
   })
 
@@ -28,7 +28,7 @@ describe ('modules/Chip/chips.selectors', () => {
 
       // when ... we select the viewed chip id from state
       const result = SUT.viewedChipIdSelector (state)
-      assert.equal(result, 1)
+      assert.equal (result, 1)
     })
   })
 
@@ -44,7 +44,7 @@ describe ('modules/Chip/chips.selectors', () => {
 
       // when ... we select the viewed chip
       const result = SUT.viewedChipSelector (state)
-      assert.deepEqual(result, DEFAULT_BLANK_CHIP)
+      assert.deepEqual (result, DEFAULT_BLANK_CHIP)
     })
 
     it ('should return a blank chip if the viewed chip id does not exist in the chips in state', () => {
@@ -60,7 +60,7 @@ describe ('modules/Chip/chips.selectors', () => {
       const result = SUT.viewedChipSelector (state)
 
       // then ... should return a blank chip
-      assert.deepEqual(result, DEFAULT_BLANK_CHIP)
+      assert.deepEqual (result, DEFAULT_BLANK_CHIP)
     })
 
     it ('should return the viewed chip from state', () => {
@@ -83,7 +83,7 @@ describe ('modules/Chip/chips.selectors', () => {
       const result = SUT.viewedChipSelector (state)
 
       // then  ... should return viewed chip
-      assert.deepEqual(result, chip)
+      assert.deepEqual (result, chip)
     })
   })
 
@@ -96,7 +96,7 @@ describe ('modules/Chip/chips.selectors', () => {
 
       // when ... we select the clicked chip id from state
       const result = SUT.clickedChipIdSelector (state)
-      assert.equal(result, 1)
+      assert.equal (result, 1)
     })
   })
 
@@ -112,7 +112,7 @@ describe ('modules/Chip/chips.selectors', () => {
 
       // when ... we select the clicked chip
       const result = SUT.clickedChipSelector (state)
-      assert.deepEqual(result, DEFAULT_BLANK_CHIP)
+      assert.deepEqual (result, DEFAULT_BLANK_CHIP)
     })
 
     it ('should return a blank chip if the clicked chip id does not exist in the chips in state', () => {
@@ -128,7 +128,7 @@ describe ('modules/Chip/chips.selectors', () => {
       const result = SUT.clickedChipSelector (state)
 
       // then ... should return a blank chip
-      assert.deepEqual(result, DEFAULT_BLANK_CHIP)
+      assert.deepEqual (result, DEFAULT_BLANK_CHIP)
     })
 
     it ('should return the clicked chip from state', () => {
@@ -151,7 +151,7 @@ describe ('modules/Chip/chips.selectors', () => {
       const result = SUT.clickedChipSelector (state)
 
       // then  ... should return clicked chip
-      assert.deepEqual(result, chip)
+      assert.deepEqual (result, chip)
     })
   })
 })

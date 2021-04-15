@@ -21,12 +21,12 @@ export function App() {
                     className={[styles.button, styles.right].join (' ')}>
               {isLeft ? <CgChevronDoubleLeft/> : <CgChevronDoubleRight/>}
             </button>
-            <ChipList showChips={isLeft} />
+            <ChipList showChips={isLeft}/>
           </div>
 
           {/* center */}
           <div className={styles.colCenter}>
-            <CircuitBoard />
+            <CircuitBoard/>
           </div>
 
           {/* right */}

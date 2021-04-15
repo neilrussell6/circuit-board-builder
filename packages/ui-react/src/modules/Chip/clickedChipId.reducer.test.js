@@ -11,7 +11,7 @@ describe ('modules/Chip/clickedChipId.reducer', () => {
       // when  ... we set the clicked the chip id
       const action = setClickedChipId (2)
       const result = SUT (state, action)
-      assert.equal(result, 2)
+      assert.equal (result, 2)
     })
 
     it ('it should deselect the clicked chip id if already selected', () => {
@@ -21,7 +21,7 @@ describe ('modules/Chip/clickedChipId.reducer', () => {
       // when  ... we set the clicked chip id
       const action = setClickedChipId (2)
       const result = SUT (state, action)
-      assert.equal(result, 0)
+      assert.equal (result, 0)
     })
   })
 })

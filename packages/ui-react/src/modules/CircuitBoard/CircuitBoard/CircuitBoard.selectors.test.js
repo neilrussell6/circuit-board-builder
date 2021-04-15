@@ -25,7 +25,7 @@ describe ('modules/CircuitBoard/CircuitBoard.selectors', () => {
         displaySettings: 'DISPLAY SETTINGS',
         circuitBoard: 'CIRCUIT BOARD',
       }
-      assert.deepEqual(result, expected)
+      assert.deepEqual (result, expected)
     })
   })
 })

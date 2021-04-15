@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {findIndex, map, propEq} from 'ramda'
+import { findIndex, map, propEq } from 'ramda'
 
 import styles from './ChipList.module.css'
 import { ChipDetail } from '../components'
@@ -7,40 +7,40 @@ import { ChipDetail } from '../components'
 export const ChipSummary = ({ chipId, name, onClick, onHover, isSelected }) => (
   <div
     className={isSelected ? styles.selectedChip : styles.chip}
-    onClick={() => onClick(chipId)}
-    onMouseOver={() => onHover(chipId)}
-    onMouseOut={() => onHover(0)}
+    onClick={() => onClick (chipId)}
+    onMouseOver={() => onHover (chipId)}
+    onMouseOut={() => onHover (0)}
   >
     {name}
   </div>
 )
 
 export const ChipList = ({ viewedChipId, clickedChipId, chips, onClick, onHover, showChips }) => {
-  const [slideOutIsOpen, setSlideOutIsOpen] = useState(false)
-  const [isVisible, setIsVisible] = useState(false)
+  const [slideOutIsOpen, setSlideOutIsOpen] = useState (false)
+  const [isVisible, setIsVisible] = useState (false)
 
-  useEffect(() => {
-    if ( showChips ) {
-      setTimeout (() => setIsVisible(true), 200)
+  useEffect (() => {
+    if (showChips) {
+      setTimeout (() => setIsVisible (true), 200)
     } else {
       setIsVisible (false)
     }
   }, [showChips])
 
-  useEffect(() => {
+  useEffect (() => {
     if (viewedChipId === 0) {
-      closeSlideOut()
+      closeSlideOut ()
     } else {
-      openSlideOut()
+      openSlideOut ()
     }
   }, [viewedChipId])
 
   const openSlideOut = () => {
-    setSlideOutIsOpen(true)
+    setSlideOutIsOpen (true)
   }
 
   const closeSlideOut = () => {
-    setSlideOutIsOpen(false)
+    setSlideOutIsOpen (false)
   }
 
   const viewedChipIndex = findIndex (propEq ('id') (viewedChipId)) (chips)
@@ -64,10 +64,10 @@ export const ChipList = ({ viewedChipId, clickedChipId, chips, onClick, onHover,
       )) (chips)}
 
       {slideOutIsOpen &&
-        <div className={styles.detailsContainer} style={{ top: slideOutOffset }}>
-          <button title="close" onClick={closeSlideOut} className={styles.close}>x</button>
-          <ChipDetail />
-        </div>
+      <div className={styles.detailsContainer} style={{ top: slideOutOffset }}>
+        <button title="close" onClick={closeSlideOut} className={styles.close}>x</button>
+        <ChipDetail/>
+      </div>
       }
     </div>
   )
