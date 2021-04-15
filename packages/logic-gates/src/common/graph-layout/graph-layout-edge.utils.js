@@ -1,4 +1,5 @@
-const { find, propEq, prop, toPairs, pipe, reduce, add, chain, map, compose, pick, evolve, pluck, max } = require ('ramda')
+const { find, propEq, prop, toPairs, pipe, reduce, add, chain, map, compose, pick, evolve, pluck, max, join } = require ('ramda')
+const { v4: uuid } = require ('uuid')
 
 //---------------------------------
 // build edges
@@ -34,6 +35,7 @@ const calculateEdgeTargetCoords = transposedGraphAL => vertices => targetVertexI
 const buildEdges = edgeSpacing => graphVertexCoords => graphAL => transposedGraphAL => {
   const f = ([sourceVertexId, targets]) => {
     return map (([targetVertexId, sourceOutputIndex, targetInputIndex]) => ({
+      id: join ('') ([sourceVertexId, sourceOutputIndex, targetVertexId, targetInputIndex]),
       sourceVertexId,
       sourceOutputIndex,
       source: calculateEdgeSourceCoords (targets) (graphVertexCoords) (sourceVertexId) (sourceOutputIndex) (edgeSpacing),

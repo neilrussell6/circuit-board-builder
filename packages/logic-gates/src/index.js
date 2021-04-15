@@ -1,11 +1,23 @@
 const {
   transposeGraphAdjacencyList,
   calculateGraphLevels,
-  buildGraphLevelToVertexIndexMap,
   findParents,
+  sortGraphLevelToVertexIdMap,
+  bfs,
+  bfsLevels,
+  bfsLevelsAll,
+  bfsLevelsAny,
+  bfsAll,
+  bfsAny,
+  dfs,
+  dfsAll,
+  dfsAny,
+  bfsCalculateLevelsAll,
+  bfsShortestPath,
+  bfsShortestPathAny,
 } = require ('./common/graph')
 const { buildEdges, buildVertices } = require ('./common/graph-layout')
-const { traverseWith, extractVertexIndices } = require ('./common/logic-gate')
+const { traverseWith } = require ('./common/logic-gate')
 const lib = require ('./common/lib')
 
 module.exports = {
@@ -15,6 +27,18 @@ module.exports = {
   traverseWith,
   lib,
   calculateGraphLevels,
-  buildGraphLevelToVertexIndexMap,
-  findParents: findParents (extractVertexIndices),
+  findParents,
+  sortGraphLevelToVertexIdMap,
+  bfs,
+  bfsLevels,
+  bfsLevelsAll,
+  bfsLevelsAny,
+  bfsAll,
+  bfsAny,
+  dfs,
+  dfsAll,
+  dfsAny,
+  bfsCalculateLevelsAll,
+  bfsShortestPath,
+  bfsShortestPathAny,
 }

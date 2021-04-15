@@ -10,8 +10,10 @@
   "scripts": {
     "ls": "lerna ls",
     "bootstrap": "lerna bootstrap",
-    "lerna:create": "lerna create",
-    "ui-react:serve": "npm run serve --prefix ./packages/ui-react",
+    "create": "lerna create",
+    "_init:all": "lerna run init --stream --concurrency=1 -- --colors",
+    "_init:envs": "cp -n .env.tpl .env || true",
+    "init": "npm i && npm run _init:envs && npm run bootstrap && npm run _init:all",
     "help": "package-json-help.js"
   },
   "devDependencies": {
