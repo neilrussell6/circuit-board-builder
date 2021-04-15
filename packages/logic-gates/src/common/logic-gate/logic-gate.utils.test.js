@@ -3,7 +3,6 @@ const sinon = require ('sinon')
 const parametrize = require ('js-parametrize')
 
 const lib = require ('../lib')
-const { findParents } = require ('../graph')
 const SUT = require ('./logic-gate.utils')
 
 describe ('common/logic-gate/logic-gate.utils', () => {
@@ -643,52 +642,6 @@ describe ('common/logic-gate/logic-gate.utils', () => {
         assert.deepEqual (result, expected)
         assert.strictEqual (callbackStub.callCount, expectedCalls.length)
         assert.deepEqual (callbackStub.args, expectedCalls)
-      })
-    })
-  })
-
-  describe ('extractVertexIndices', () => {
-    parametrize ([
-      [
-        {
-          // AND
-          '0': [],
-          '1': [],
-          '2': [['0', 0, 0], ['1', 0, 1]],
-          // NOT
-          '3': [],
-          '4': [['3', 0, 0]],
-          // OR
-          '5': [['2', 0, 0], ['4', 0, 1]],
-          // OUTPUTS
-          '6': [['5', 0, 0]],
-          '7': [['5', 0, 0]],
-        },
-        '2',
-        ['2', '0', '1'],
-      ],
-      [
-        {
-          // AND
-          '0': [],
-          '1': [],
-          '2': [['0', 0, 0], ['1', 0, 1]],
-          // NOT
-          '3': [],
-          '4': [['3', 0, 0]],
-          // OR
-          '5': [['2', 0, 0], ['4', 0, 1]],
-          // OUTPUTS
-          '6': [['5', 0, 0]],
-          '7': [['5', 0, 0]],
-        },
-        '5',
-        ['5', '2', '4', '0', '1', '3'],
-      ],
-    ], (transposedGraphAL, i, expected) => {
-      it ('should return all the parents of the provided vertex given a transposed adjacency list', () => {
-        const result = findParents (SUT.extractVertexIndices) (transposedGraphAL) (i)
-        assert.deepEqual (result, expected)
       })
     })
   })

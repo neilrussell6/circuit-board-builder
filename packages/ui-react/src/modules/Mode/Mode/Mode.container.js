@@ -6,8 +6,11 @@ import { setMode } from '../mode.reducer'
 
 const mapStateToProps = ModeSelector
 
-const mapDispatchToProps = dispatch => ({
-  setMode: mode => dispatch (setMode (mode)),
+const mapDispatchToProps = (dispatch, { onChange }) => ({
+  setMode: mode => {
+    dispatch (setMode (mode))
+    onChange (mode)
+  },
 })
 
 export const Mode = connect (mapStateToProps, mapDispatchToProps) (ModeComponent)

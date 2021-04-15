@@ -1,3 +1,3 @@
-const { traverseWith, extractVertexIndices } = require ('./logic-gate.utils')
+const { traverseWith } = require ('./logic-gate.utils')
 
-module.exports = { traverseWith, extractVertexIndices }
+module.exports = { traverseWith }

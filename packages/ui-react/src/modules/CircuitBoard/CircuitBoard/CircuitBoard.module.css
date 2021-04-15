@@ -1,4 +1,11 @@
-.svgContainer {
+.container {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+.NodesContainer {
   position: relative;
   overflow: hidden;
   height: 100%;

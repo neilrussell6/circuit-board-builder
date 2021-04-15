@@ -101,33 +101,141 @@ describe ('common/graph/graph-adjacency-list.utils', () => {
     })
   })
 
-  describe ('buildVertexIndexToLevelMap', () => {
+  describe ('sortGraphLevelToVertexIdMap', () => {
     parametrize ([
+      // -------------------------
+      // INPUT
+      // -------------------------
+      // A --(0)
+      //      +--- D --(0)
+      // B --(1)        +--- F
+      // C --(0)-- E --(0)
+      // -------------------------
       [
+        // graph AL
         {
-          // AND
-          '0': 0,
-          '1': 0,
-          '2': 1,
-          // NOT
-          '3': 0,
-          '4': 1,
-          // ID
-          '5': 2,
-          // OUTPUTS
-          '6': 3,
-          '7': 3,
+          'A': [['D', 0, 0]],
+          'B': [['D', 0, 1]],
+          'C': [['E', 0, 0]],
+          'D': [['F', 0, 0]],
+          'E': [['F', 0, 0]],
+          'F': [],
         },
+        // level to vertex map
         [
-          ['0', '1', '3'], // 0
-          ['2', '4'], // 1
-          ['5'], // 2
-          ['6', '7'], // 3
+          ['A', 'B', 'C'], // 0
+          ['D', 'E'], // 1
+          ['F'], // 2
+        ],
+        // expected
+        [
+          ['A', 'B', 'C'], // 0
+          ['D', 'E'], // 1
+          ['F'], // 2
         ],
       ],
-    ], (levels, expected) => {
-      it ('should build a map of levels to vertex indices', () => {
-        const result = SUT.buildGraphLevelToVertexIndexMap (levels)
+      [
+        // graph AL
+        {
+          'A': [['D', 0, 1]],
+          'B': [['D', 0, 0]],
+          'C': [['E', 0, 0]],
+          'D': [['F', 0, 0]],
+          'E': [['F', 0, 0]],
+          'F': [],
+        },
+        // level to vertex map
+        [
+          ['A', 'B', 'C'], // 0
+          ['D', 'E'], // 1
+          ['F'], // 2
+        ],
+        // expected
+        [
+          ['B', 'A', 'C'], // 0
+          ['D', 'E'], // 1
+          ['F'], // 2
+        ],
+      ],
+      [
+        // graph AL
+        {
+          'A': [['D', 0, 0]],
+          'B': [['D', 0, 1]],
+          'C': [['E', 0, 0]],
+          'D': [['F', 0, 0]],
+          'E': [['F', 0, 0]],
+          'F': [],
+        },
+        // level to vertex map
+        [
+          ['C', 'B', 'A'], // 0
+          ['D', 'E'], // 1
+          ['F'], // 2
+        ],
+        // expected
+        [
+          ['A', 'B', 'C'], // 0
+          ['D', 'E'], // 1
+          ['F'], // 2
+        ],
+      ],
+      [
+        // graph AL
+        {
+          'A': [['D', 0, 0]],
+          'B': [['D', 0, 1]],
+          'C': [['E', 0, 0]],
+          'D': [['F', 0, 0]],
+          'E': [['F', 0, 0]],
+          'F': [],
+        },
+        // level to vertex map
+        [
+          ['A', 'B', 'C'], // 0
+          ['E', 'D'], // 1
+          ['F'], // 2
+        ],
+        // expected
+        [
+          ['C', 'A', 'B'], // 0
+          ['E', 'D'], // 1
+          ['F'], // 2
+        ],
+      ],
+
+      // -------------------------
+      // INPUT
+      // -------------------------
+      // X --(0)-- Y --(0)
+      //                +--- F
+      // C --(0)-- E --(1)
+      // -------------------------
+      [
+        // graph AL
+        {
+          'C': [['E', 0, 0]],
+          'E': [['F', 0, 1]],
+          'F': [],
+          'X': [['Y', 0, 0]],
+          'Y': [['F', 0, 0]],
+        },
+        // level to vertex map
+        [
+          ['C', 'X'], // 0
+          ['Y', 'E'], // 1
+          ['F'], // 2
+        ],
+        // expected
+        [
+          ['X', 'C'], // 0
+          ['Y', 'E'], // 1
+          ['F'], // 2
+        ],
+      ],
+    ], (graphAL, levelVertexMap, expected) => {
+      it ('should sort map of levels to vertex ids so that parents are grouped correctly', () => {
+        const result = SUT.sortGraphLevelToVertexIdMap (graphAL) (levelVertexMap)
         assert.deepEqual (result, expected)
       })
     })
@@ -136,52 +244,6 @@ describe ('common/graph/graph-adjacency-list.utils', () => {
   describe ('bfs', () => {
     it ('should ...', () => {
       // TODO: test
-    })
-  })
-
-  describe ('findParents', () => {
-    parametrize ([
-      [
-        {
-          // AND
-          '0': [],
-          '1': [],
-          '2': ['0', '1'],
-          // NOT
-          '3': [],
-          '4': ['3'],
-          // OR
-          '5': ['2', '4'],
-          // OUTPUTS
-          '6': ['5'],
-          '7': ['5'],
-        },
-        '2',
-        ['2', '0', '1'],
-      ],
-      [
-        {
-          // AND
-          '0': [],
-          '1': [],
-          '2': ['0', '1'],
-          // NOT
-          '3': [],
-          '4': ['3'],
-          // OR
-          '5': ['2', '4'],
-          // OUTPUTS
-          '6': ['5'],
-          '7': ['5'],
-        },
-        '5',
-        ['5', '2', '4', '0', '1', '3'],
-      ],
-    ], (graphAL, i, expected) => {
-      it ('should return all the parents of the provided vertex given a transposed adjacency list', () => {
-        const result = SUT.findParents (identity) (graphAL) (i)
-        assert.deepEqual (result, expected)
-      })
     })
   })
 })

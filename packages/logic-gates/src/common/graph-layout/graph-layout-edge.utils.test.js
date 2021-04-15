@@ -1,20 +1,9 @@
 const { assert } = require ('chai')
-const sinon = require ('sinon')
 const parametrize = require ('js-parametrize')
 
 const SUT = require ('./graph-layout-edge.utils')
 
 describe ('common/graph-layout/logic-gate.utils', () => {
-  let sandbox = null
-
-  beforeEach (async () => {
-    sandbox = await sinon.createSandbox ()
-  })
-
-  afterEach (async () => {
-    await sandbox.restore ()
-  })
-
   describe ('buildEdges', () => {
     parametrize ([
       //  (A/0)         (C/2)
@@ -79,12 +68,14 @@ describe ('common/graph-layout/logic-gate.utils', () => {
         [
           // 0, 1 -> 2 (AND)
           {
+            id: '0020',
             sourceVertexId: '0',
             sourceOutputIndex: 0,
             source: { x: 0, y: -70 },
             target: { x: 180, y: -39 },
           },
           {
+            id: '1021',
             sourceVertexId: '1',
             sourceOutputIndex: 0,
             source: { x: 0, y: 0 },
@@ -92,6 +83,7 @@ describe ('common/graph-layout/logic-gate.utils', () => {
           },
           // 2 (AND) -> 5 (ID)
           {
+            id: '2050',
             sourceVertexId: '2',
             sourceOutputIndex: 0,
             source: { x: 180, y: -35 },
@@ -99,6 +91,7 @@ describe ('common/graph-layout/logic-gate.utils', () => {
           },
           // 3 -> 4 (NOT)
           {
+            id: '3040',
             sourceVertexId: '3',
             sourceOutputIndex: 0,
             source: { x: 0, y: 70 },
@@ -106,6 +99,7 @@ describe ('common/graph-layout/logic-gate.utils', () => {
           },
           // 4 (NOT) -> 5 (ID)
           {
+            id: '4051',
             sourceVertexId: '4',
             sourceOutputIndex: 0,
             source: { x: 180, y: 35 },
@@ -113,12 +107,14 @@ describe ('common/graph-layout/logic-gate.utils', () => {
           },
           // 5 (ID) -> 6 (OUTPUT 1), 7 (OUTPUT 2)
           {
+            id: '5060',
             sourceVertexId: '5',
             sourceOutputIndex: 0,
             source: { x: 360, y: -4 },
             target: { x: 540, y: -35 },
           },
           {
+            id: '5170',
             sourceVertexId: '5',
             sourceOutputIndex: 1,
             source: { x: 360, y: 4 },

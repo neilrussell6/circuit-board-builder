@@ -8,6 +8,7 @@ const { has, mergeRight, fromPairs, pluck, nth, zip, map, chain, compose, prop }
 // ... inputs and outputs back to caller
 //---------------------------------
 
+// TODO: rename so it's obvious this applies each vertex's function
 const traverseWith = callback => fs => start => graph => {
   let memo = {} // TODO: is there a way to include in g?
   const g = n => {
@@ -41,12 +42,3 @@ const traverseWith = callback => fs => start => graph => {
 }
 
 module.exports.traverseWith = traverseWith
-
-//---------------------------------
-// extract vertex indices
-// ... from adjacent data
-//---------------------------------
-
-const extractVertexIndices = map (nth (0))
-
-module.exports.extractVertexIndices = extractVertexIndices

@@ -12,11 +12,13 @@ const name = '[display settings]'
 //---------------------------------
 
 export const INITIAL_STATE = {
-  vSpacing: 50,
-  hSpacing: 120,
+  vspacing: 50,
+  hspacing: 120,
   edgeThickness: 1.4,
   edgeSpacing: 5,
   size: 20,
+  rectSize: 40,
+  xOffset: -60,
 }
 
 //---------------------------------

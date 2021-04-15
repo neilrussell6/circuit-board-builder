@@ -3,6 +3,8 @@ import { lib } from '@nr6/nand2tetris-logic-gates'
 // TODO: use the NODE_TYPES in CircuitBoard constants
 const NODE_TYPE = {
   INPUT: 'input',
+  EXTENSION: 'extension',
+  SPLITTER: 'splitter',
   CHIP: 'chip',
   OUTPUT: 'output',
 }
@@ -17,26 +19,21 @@ export const DEFAULT_BLANK_CHIP = {
 }
 
 export const CHIP_IDS = {
-  ID: 1,
   NAND: 2,
   NOT: 3,
   AND: 4,
   OR: 5,
-  MUX: 6,
-  DMUX: 7,
-  DEMO_1: 8,
+  XOR: 6,
+  MUX: 7,
+  DMUX: 8,
+  DEMO_1: 9,
+  DEMO_2: 10,
+  DEMO_3: 11,
+  DEMO_4: 12,
+  DEMO_5: 13,
 }
 
 const CHIP_DATA = {
-  ID: {
-    start: ['0'],
-    end: ['2'],
-    nodes: {
-      '0': { chipId: null, label: '', type: NODE_TYPE.INPUT, graphAL: [['1', 0, 0]], f: lib.VALUE (true) },
-      '1': { chipId: CHIP_IDS.ID, label: 'ID', type: NODE_TYPE.CHIP, graphAL: [['2', 0, 0]], f: lib.ID },
-      '2': { chipId: null, label: '', type: NODE_TYPE.OUTPUT, graphAL: [], f: lib.ID },
-    },
-  },
   NOT: {
     start: ['0'],
     end: ['2'],
@@ -76,6 +73,16 @@ const CHIP_DATA = {
       '3': { chipId: null, label: '', type: NODE_TYPE.OUTPUT, graphAL: [], f: lib.ID },
     },
   },
+  XOR: {
+    start: ['0', '1'],
+    end: ['3'],
+    nodes: {
+      '0': { chipId: null, label: '', type: NODE_TYPE.INPUT, graphAL: [['2', 0, 0]], f: lib.VALUE (true) },
+      '1': { chipId: null, label: '', type: NODE_TYPE.INPUT, graphAL: [['2', 0, 1]], f: lib.VALUE (false) },
+      '2': { chipId: CHIP_IDS.XOR, label: 'XOR', type: NODE_TYPE.CHIP, graphAL: [['3', 0, 0]], f: lib.XOR },
+      '3': { chipId: null, label: '', type: NODE_TYPE.OUTPUT, graphAL: [], f: lib.ID },
+    },
+  },
   MUX: {
     start: ['0', '1', '2'],
     end: ['4'],
@@ -93,7 +100,7 @@ const CHIP_DATA = {
     nodes: {
       '0': { chipId: null, label: '', type: NODE_TYPE.INPUT, graphAL: [['2', 0, 0]], f: lib.VALUE (true) },
       '1': { chipId: null, label: '', type: NODE_TYPE.INPUT, graphAL: [['2', 0, 1]], f: lib.VALUE (false) },
-      '2': { chipId: CHIP_IDS.DMUX, label: 'DMUX', type: NODE_TYPE.CHIP, graphAL: [['3', 0, 0], ['4', 0, 0]], f: lib.DMUX },
+      '2': { chipId: CHIP_IDS.DMUX, label: 'DMUX', type: NODE_TYPE.CHIP, graphAL: [['3', 0, 0], ['4', 1, 0]], f: lib.DMUX },
       '3': { chipId: null, label: '', type: NODE_TYPE.OUTPUT, graphAL: [], f: lib.ID },
       '4': { chipId: null, label: '', type: NODE_TYPE.OUTPUT, graphAL: [], f: lib.ID,
       },
@@ -113,26 +120,66 @@ const CHIP_DATA = {
       '7': { chipId: null, label: '', type: NODE_TYPE.OUTPUT, graphAL: [], f: lib.ID },
     },
   },
+  DEMO_2: {
+    start: ['A', 'B'],
+    end: ['E'],
+    nodes: {
+      'A': { chipId: null, label: '', type: NODE_TYPE.INPUT, graphAL: [['C', 0, 0]], f: lib.VALUE (true) },
+      'B': { chipId: null, label: '', type: NODE_TYPE.INPUT, graphAL: [['C', 0, 1]], f: lib.VALUE (false) },
+      'C': { chipId: CHIP_IDS.AND, label: 'AND', type: NODE_TYPE.CHIP, graphAL: [['D', 0, 0]], f: lib.AND },
+      'D': { chipId: CHIP_IDS.NOT, label: 'NOT', type: NODE_TYPE.CHIP, graphAL: [['E', 0, 0]], f: lib.NOT },
+      'E': { chipId: null, label: '', type: NODE_TYPE.OUTPUT, graphAL: [], f: lib.ID },
+    },
+  },
+  DEMO_3: {
+    start: ['IN1', 'IN2'],
+    end: ['OUT1', 'OUT2'],
+    nodes: {
+      'IN1': { chipId: null, label: '', type: NODE_TYPE.INPUT, graphAL: [['GATE1', 0, 0], ['GATE2', 0, 0]], f: lib.VALUE (true) },
+      'IN2': { chipId: null, label: '', type: NODE_TYPE.INPUT, graphAL: [['GATE1', 0, 1], ['GATE2', 0, 1]], f: lib.VALUE (false) },
+      'GATE1': { chipId: CHIP_IDS.AND, label: 'AND', type: NODE_TYPE.CHIP, graphAL: [['OUT1', 0, 0]], f: lib.AND },
+      'GATE2': { chipId: CHIP_IDS.OR, label: 'OR', type: NODE_TYPE.CHIP, graphAL: [['OUT2', 0, 0]], f: lib.OR },
+      'OUT1': { chipId: null, label: '', type: NODE_TYPE.OUTPUT, graphAL: [], f: lib.ID },
+      'OUT2': { chipId: null, label: '', type: NODE_TYPE.OUTPUT, graphAL: [], f: lib.ID },
+    },
+  },
+  DEMO_4: {
+    start: ['IN1', 'IN2'],
+    end: ['OUT1', 'OUT2'],
+    nodes: {
+      'IN1': { chipId: null, label: '', type: NODE_TYPE.INPUT, graphAL: [['A', 0, 0]], f: lib.VALUE (true) },
+      'A': { chipId: CHIP_IDS.NOT, label: 'NOT', type: NODE_TYPE.CHIP, graphAL: [['B', 0, 0]], f: lib.NOT },
+      'B': { chipId: CHIP_IDS.NOT, label: 'NOT', type: NODE_TYPE.CHIP, graphAL: [['OUT1', 0, 0]], f: lib.NOT },
+      'OUT1': { chipId: null, label: '', type: NODE_TYPE.OUTPUT, graphAL: [], f: lib.ID },
+      'IN2': { chipId: null, label: '', type: NODE_TYPE.INPUT, graphAL: [['D', 0, 0]], f: lib.VALUE (true) },
+      'D': { chipId: CHIP_IDS.NOT, label: 'NOT', type: NODE_TYPE.CHIP, graphAL: [['E', 0, 0]], f: lib.NOT },
+      'E': { chipId: CHIP_IDS.NOT, label: 'NOT', type: NODE_TYPE.CHIP, graphAL: [['OUT2', 0, 0]], f: lib.NOT },
+      'OUT2': { chipId: null, label: '', type: NODE_TYPE.OUTPUT, graphAL: [], f: lib.ID },
+    },
+  },
+  DEMO_5: {
+    start: ['IN1', 'IN2', 'IN3'],
+    end: ['OUT1', 'OUT2'],
+    nodes: {
+      'IN1': { chipId: null, label: '', type: NODE_TYPE.INPUT, graphAL: [['NOT1', 0, 0]], f: lib.VALUE (true) },
+      'IN2': { chipId: null, label: '', type: NODE_TYPE.INPUT, graphAL: [['SPLIT1', 0, 0]], f: lib.VALUE (true) },
+      'IN3': { chipId: null, label: '', type: NODE_TYPE.INPUT, graphAL: [['EXT1', 0, 0]], f: lib.VALUE (true) },
+      'NOT1': { chipId: CHIP_IDS.NOT, label: 'NOT', type: NODE_TYPE.CHIP, graphAL: [['XOR', 0, 0]], f: lib.NOT },
+      'SPLIT1': { chipId: null, label: '', type: NODE_TYPE.SPLITTER, graphAL: [['XOR', 0, 1], ['NAND', 0, 0]], f: lib.ID },
+      'EXT1': { chipId: null, label: '', type: NODE_TYPE.EXTENSION, graphAL: [['NAND', 0, 1]], f: lib.ID },
+      'XOR': { chipId: CHIP_IDS.XOR, label: 'XOR', type: NODE_TYPE.CHIP, graphAL: [['NOT2', 0, 0]], f: lib.XOR },
+      'NAND': { chipId: CHIP_IDS.NAND, label: 'NAND', type: NODE_TYPE.CHIP, graphAL: [['EXT2', 0, 0]], f: lib.NAND },
+      'NOT2': { chipId: CHIP_IDS.NOT, label: 'NOT', type: NODE_TYPE.CHIP, graphAL: [['OUT1', 0, 0]], f: lib.NOT },
+      'EXT2': { chipId: null, label: '', type: NODE_TYPE.EXTENSION, graphAL: [['OUT2', 0, 0]], f: lib.ID },
+      'OUT1': { chipId: null, label: '', type: NODE_TYPE.OUTPUT, graphAL: [], f: lib.ID },
+      'OUT2': { chipId: null, label: '', type: NODE_TYPE.OUTPUT, graphAL: [], f: lib.ID },
+    },
+  }
 }
 
-// export const CHIP_CIRCUIT_BOARDS = map (assocUniqueIds) (CHIP_DATA)
 export const CHIP_CIRCUIT_BOARDS = CHIP_DATA
 
 export const DEFAULT_CHIPS = {
-  [CHIP_IDS.ID]: {
-    name: 'ID',
-    description: 'Outputs the same value as the input.',
-    functionality: lib.ID,
-    truthTable: [
-      ['in', 'out'],
-      [0, 0],
-      [1, 1],
-    ],
-    inputs: ['in'],
-    outputs: ['out'],
-    circuitBoard: CHIP_CIRCUIT_BOARDS.ID,
-    id: CHIP_IDS.ID,
-  },
   [CHIP_IDS.NAND]: {
     name: 'NAND',
     description: 'Outputs true unless both inputs are true',
@@ -195,6 +242,22 @@ export const DEFAULT_CHIPS = {
     circuitBoard: CHIP_CIRCUIT_BOARDS.OR,
     id: CHIP_IDS.OR,
   },
+  [CHIP_IDS.XOR]: {
+    name: 'XOR',
+    description: 'Outputs true if only one of the inputs is true, but not both.',
+    functionality: lib.XOR,
+    truthTable: [
+      ['a', 'b', 'out'],
+      [0, 0, 0],
+      [0, 1, 1],
+      [1, 0, 1],
+      [1, 1, 0],
+    ],
+    inputs: ['a', 'b'],
+    outputs: ['out'],
+    circuitBoard: CHIP_CIRCUIT_BOARDS.XOR,
+    id: CHIP_IDS.XOR,
+  },
   [CHIP_IDS.MUX]: {
     name: 'MUX',
     description: 'Outputs the value of a if sel is false, otherwise it outputs the value of b.',
@@ -240,5 +303,45 @@ export const DEFAULT_CHIPS = {
     outputs: ['out'],
     circuitBoard: CHIP_CIRCUIT_BOARDS.DEMO_1,
     id: CHIP_IDS.DEMO_1,
+  },
+  [CHIP_IDS.DEMO_2]: {
+    name: 'DEMO 2',
+    description: '2 gates (2 inputs and 1 output)',
+    functionality: () => false,
+    truthTable: [],
+    inputs: ['a', 'b'],
+    outputs: ['out1', 'out2'],
+    circuitBoard: CHIP_CIRCUIT_BOARDS.DEMO_2,
+    id: CHIP_IDS.DEMO_2,
+  },
+  [CHIP_IDS.DEMO_3]: {
+    name: 'DEMO 3',
+    description: '2 gates (same inputs and separate outputs)',
+    functionality: () => false,
+    truthTable: [],
+    inputs: ['a', 'b'],
+    outputs: ['out1', 'out2'],
+    circuitBoard: CHIP_CIRCUIT_BOARDS.DEMO_3,
+    id: CHIP_IDS.DEMO_3,
+  },
+  [CHIP_IDS.DEMO_4]: {
+    name: 'DEMO 4',
+    description: '6 gates (3 and 3 in series)',
+    functionality: () => false,
+    truthTable: [],
+    inputs: ['a', 'b'],
+    outputs: ['out1', 'out2'],
+    circuitBoard: CHIP_CIRCUIT_BOARDS.DEMO_4,
+    id: CHIP_IDS.DEMO_4,
+  },
+  [CHIP_IDS.DEMO_5]: {
+    name: 'DEMO 5',
+    description: '3 inputs (2nd one split)',
+    functionality: () => false,
+    truthTable: [],
+    inputs: ['a', 'b'],
+    outputs: ['out1', 'out2'],
+    circuitBoard: CHIP_CIRCUIT_BOARDS.DEMO_5,
+    id: CHIP_IDS.DEMO_5,
   },
 }

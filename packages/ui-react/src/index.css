@@ -1,5 +1,12 @@
 /* common */
 
+* {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 html, body, #root {
   margin: 0;
   padding: 0;
@@ -42,7 +49,8 @@ hr {
   fill: #d94d4d;
   transition: fill 0.2s;
 }
-.circle.hover {
+.interactive .circle.input.hover,
+.update .circle.input.hover {
   fill: #ff0000;
   transition: fill 0s;
 }
@@ -50,7 +58,8 @@ hr {
   fill: #9dc74d;
   transition: fill 0.2s;
 }
-.circle.active.hover {
+.interactive .circle.input.active.hover,
+.update .circle.input.active.hover {
   fill: #aaff00;
   transition: fill 0s;
 }

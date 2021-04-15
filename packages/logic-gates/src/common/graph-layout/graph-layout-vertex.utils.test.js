@@ -1,20 +1,9 @@
 const { assert } = require ('chai')
-const sinon = require ('sinon')
 const parametrize = require ('js-parametrize')
 
 const SUT = require ('./graph-layout-vertex.utils')
 
 describe ('common/graph-layout/logic-gate.utils', () => {
-  let sandbox = null
-
-  beforeEach (async () => {
-    sandbox = await sinon.createSandbox ()
-  })
-
-  afterEach (async () => {
-    await sandbox.restore ()
-  })
-
   describe ('buildVertices', () => {
     parametrize ([
       //  (A/0)         (C/2)
