@@ -1,30 +1,22 @@
 import React, { useRef, useEffect, useState } from 'react'
 import { select, transition, easeLinear } from 'd3'
 import {
-  tap,
   find,
   propEq,
   filter,
   pick,
   mergeRight,
-  without,
   head,
   assoc,
   compose,
   map,
   prop,
   evolve,
-  omit,
-  reject,
-  flip,
-  includes,
-  isEmpty,
   nth,
   assocPath,
   path,
   zip,
-  equals,
-  concat,
+  tap,
 } from 'ramda'
 import {
   lib,
@@ -34,92 +26,23 @@ import {
   buildEdges,
   calculateGraphLevels,
   buildGraphLevelToVertexIndexMap,
-  findParents,
 } from '@nr6/nand2tetris-logic-gates'
 import * as d3 from 'd3'
 
 import styles from './CircuitBoard.module.css'
-import { SVG_HEIGHT, SVG_WIDTH, NODE_TYPE } from './constants'
-import { MODE } from '../App'
+import { SVG_HEIGHT, SVG_WIDTH, NODE_TYPE } from '../constants'
+import { MODE } from '../../Mode'
+import { Mode } from '../../Mode/components'
 
-// TODO: get from state
-const displaySettings = {
-  vspacing: 50,
-  hspacing: 120,
-  edgeThickness: 1.4,
-  edgeSpacing: 5,
-  size: 20,
-}
-
-export function CircuitBoard() {
-  // TODO: get from state
-  const [mode, setMode] = useState (MODE.INTERACTIVE)
-
-  // TODO: get from state
-  const [circuitBoard, setCircuitBoard] = useState ({
-    start: ['0', '1', '3'],
-    end: ['6', '7'],
-    nodes: {
-      '0': {
-        chipId: null,
-        label: '',
-        type: NODE_TYPE.INPUT,
-        graphAL: [['2', 0, 0]],
-        f: lib.VALUE (true),
-      },
-      '1': {
-        chipId: null,
-        label: '',
-        type: NODE_TYPE.INPUT,
-        graphAL: [['2', 0, 1]],
-        f: lib.VALUE (false),
-      },
-      '2': {
-        chipId: '1',
-        label: 'AND',
-        type: NODE_TYPE.CHIP,
-        graphAL: [['5', 0, 0]],
-        f: lib.AND,
-      },
-      '3': {
-        chipId: null,
-        label: '',
-        type: NODE_TYPE.INPUT,
-        graphAL: [['4', 0, 0]],
-        f: lib.VALUE (true),
-      },
-      '4': {
-        chipId: '2',
-        label: 'NOT',
-        type: NODE_TYPE.CHIP,
-        graphAL: [['5', 0, 1]],
-        f: lib.NOT,
-      },
-      '5': {
-        chipId: '3',
-        label: 'OR',
-        type: NODE_TYPE.CHIP,
-        graphAL: [['6', 0, 0], ['7', 0, 0]],
-        f: lib.OR,
-      },
-      '6': {
-        chipId: null,
-        label: '',
-        type: NODE_TYPE.OUTPUT,
-        graphAL: [],
-        f: lib.ID,
-      },
-      '7': {
-        chipId: null,
-        label: '',
-        type: NODE_TYPE.OUTPUT,
-        graphAL: [],
-        f: lib.ID,
-      },
-    },
-  })
-
-  // ...
+export function CircuitBoard({
+  mode,
+  displaySettings,
+  circuitBoard,
+  setCircuitBoard,
+  selectNode,
+  updateNode,
+  deleteNode,
+}) {
   const [graphAL, setGraphAL] = useState ()
   const [transposedGraphAL, setTransposedGraphAL] = useState ()
   const [xOffset, setXOffset] = useState (0)
@@ -141,8 +64,8 @@ export function CircuitBoard() {
     setTransposedGraphAL (transposedGraphAL)
 
     // build vertices (coords) for D3
-    const { hspacing, vspacing } = displaySettings
-    const graphUIVertices = buildVertices (hspacing) (vspacing) (graphAL) (circuitBoard) (graphLevels) (graphLevelToVertexIndexMap)
+    const { hSpacing, vSpacing } = displaySettings
+    const graphUIVertices = buildVertices (hSpacing) (vSpacing) (graphAL) (circuitBoard) (graphLevels) (graphLevelToVertexIndexMap)
 
     // build edges (coords) for D3
     const { edgeSpacing } = displaySettings
@@ -197,14 +120,14 @@ export function CircuitBoard() {
     const line = d3.line ().context (null)
     const drawSegmentedEdge = ({ source, target }) => {
       const s1 = [source.x - newXOffset, source.y]
-      const s2 = [(source.x - newXOffset) + (hspacing / 3), source.y]
-      const s3 = [(target.x - newXOffset) - (hspacing / 3), target.y]
+      const s2 = [(source.x - newXOffset) + (hSpacing / 3), source.y]
+      const s3 = [(target.x - newXOffset) - (hSpacing / 3), target.y]
       const s4 = [target.x - newXOffset, target.y]
       return line ([s1, s2, s3, s4])
     }
 
     // calculations
-    const newXOffset = (hspacing * graphLevelCount - hspacing) / 2
+    const newXOffset = (hSpacing * graphLevelCount - hSpacing) / 2
 
     // edges
     // TODO: draw path and translate, so that animations are not so shit
@@ -324,14 +247,17 @@ export function CircuitBoard() {
         return select (this).classed ('hover', false)
       })
       .on ('mousedown', function (e, { id }) {
-        if (mode === MODE.INTERACTIVE) {
+        if (mode === MODE.INTERACTIVE || mode === MODE.SELECT) {
           console.log ('SELECT NODE', id)
+          selectNode (id)
         }
         if (mode === MODE.UPDATE) {
           console.log ('UPDATE NODE', id)
+          updateNode (id)
         }
         if (mode === MODE.DELETE) {
           console.log ('DELETE NODE', id)
+          deleteNode (id)
         }
       })
 
@@ -386,13 +312,7 @@ export function CircuitBoard() {
 
   return (
     <div className={styles.svgContainer}>
-      {/* TODO: move to dedicated component */}
-      <div className={styles.modeButtonGroup}>
-        MODE:
-        <button className={styles.button} onClick={() => setMode (MODE.INTERACTIVE)}>INTERACTIVE</button>
-        <button className={styles.button} onClick={() => setMode (MODE.UPDATE)}>UPDATE</button>
-        <button className={styles.button} onClick={() => setMode (MODE.DELETE)}>DELETE</button>
-      </div>
+      <Mode/>
       <svg
         preserveAspectRatio="xMinYMin meet"
         viewBox={[-SVG_WIDTH / 2, -SVG_HEIGHT / 2, SVG_WIDTH, SVG_HEIGHT]}

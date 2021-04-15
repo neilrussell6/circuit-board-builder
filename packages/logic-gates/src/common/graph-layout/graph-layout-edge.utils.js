@@ -1,4 +1,4 @@
-const { find, propEq, prop, toPairs, pipe, reduce, add, chain, map, compose, pick, evolve, pluck, max } = require ('ramda')
+const { find, propEq, prop, toPairs, pipe, reduce, add, chain, map, compose, pick, evolve, pluck, max, tap } = require ('ramda')
 
 //---------------------------------
 // build edges

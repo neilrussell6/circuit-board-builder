@@ -5,5 +5,8 @@ Circuit Board Builder
 
 ```
 npm i
+
+npm run bootstrap
+
 npm run ui-react:serve
 ```
