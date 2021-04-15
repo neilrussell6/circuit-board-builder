@@ -8,8 +8,12 @@ import { setClickedChipId } from '../clickedChipId.reducer'
 const mapStateToProps = ChipListSelector
 
 const mapDispatchToProps = dispatch => ({
-  onClick: chipId => dispatch (setClickedChipId (chipId)),
-  onHover: chipId => dispatch (setViewedChipId (chipId)),
+  onClick: chipId => {
+    dispatch (setClickedChipId (chipId))
+  },
+  onHover: chipId => {
+    dispatch (setViewedChipId (chipId))
+  },
 })
 
 export const ChipList = connect (mapStateToProps, mapDispatchToProps) (ChipListComponent)

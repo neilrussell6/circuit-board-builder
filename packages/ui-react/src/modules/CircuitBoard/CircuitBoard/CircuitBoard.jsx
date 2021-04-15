@@ -16,6 +16,7 @@ import {
   assocPath,
   path,
   zip,
+  tap,
 } from 'ramda'
 import {
   lib,
@@ -34,14 +35,14 @@ import { MODE } from '../../Mode'
 import { Mode } from '../../Mode/components'
 
 export function CircuitBoard({
-                               mode,
-                               displaySettings,
-                               circuitBoard,
-                               setCircuitBoard,
-                               selectNode,
-                               updateNode,
-                               deleteNode,
-                             }) {
+  mode,
+  displaySettings,
+  circuitBoard,
+  setCircuitBoard,
+  selectNode,
+  updateNode,
+  deleteNode,
+}) {
   const [graphAL, setGraphAL] = useState ()
   const [transposedGraphAL, setTransposedGraphAL] = useState ()
   const [xOffset, setXOffset] = useState (0)

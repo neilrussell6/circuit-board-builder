@@ -6,6 +6,8 @@ import { DEFAULT_BLANK_CHIP } from '../Chip/constants'
 import { chipsSelector } from '../Chip/chips.selectors'
 
 export const circuitBoardSelector = prop ('circuitBoard')
+// TODO: use this when we solve the id problem in CircuitBoard.jsx RE: merging graphData and UI data
+// export const circuitBoardSelector = createSelector ([prop ('circuitBoard')], circuitBoard => assocUniqueIds (circuitBoard))
 
 export const circuitBoardInputsSelector = createSelector (circuitBoardSelector, prop ('inputs'))
 export const circuitBoardOutputsSelector = createSelector (circuitBoardSelector, prop ('outputs'))
